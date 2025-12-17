@@ -53,7 +53,14 @@ public class WorkflowTemplate{
     }
     public  WorkflowTemplate(long id, String templateName, String description,Integer totalLevels, Boolean active){
       this.id=id;
-      this
+      this.templateName=templateName;
+      this.description=description;
+      this.totalLevels=totalLevels;
+      this.activ=active;
+
+    }
+    public  WorkflowTemplate(){
+        
     }
 
 }
