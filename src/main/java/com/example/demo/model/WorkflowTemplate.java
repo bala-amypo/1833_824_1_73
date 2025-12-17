@@ -51,8 +51,9 @@ public class WorkflowTemplate{
     public void setactive(Boolean active) {
         this.active= active;
     }
-    public  WorkflowTemplate(){
-
+    public  WorkflowTemplate(long id, String templateName, String description,Integer totalLevels, Boolean active){
+      this.id=id;
+      this
     }
 
 }
