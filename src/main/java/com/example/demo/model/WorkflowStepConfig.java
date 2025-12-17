@@ -53,13 +53,14 @@ public class WorkflowStepConfig{
         this.instructions= instructions;
     }
     public  WorkflowStepConfig (long id, Long templated,Integer levelNumber, String approverRole, String instructions){
-
-    }
-    public  WorkflowStepConfig(){
       this.id=id;
       this.templated=templated;
-      this.levelNumber=levelNumber;l
-      this.approverRole
+      this.levelNumber=levelNumber;
+      this.approverRole=approverRole;
+      this.instructions=instructions;
+    }
+    public  WorkflowStepConfig(){
+      
     }
 
 }
