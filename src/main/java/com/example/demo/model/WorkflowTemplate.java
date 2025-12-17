@@ -14,32 +14,32 @@ public class WorkflowTemplate{
         this.templateName = templateName;
     }
 
-    public void (String email) {
-        this.email = email;
+    public void setdescription(String discription) {
+        this.description = description;
     }
 
-    public void setPhno(String phno) {
-        this.phno = phno;
+    public void settotalLevels(Integer totalLevels) {
+        this.totalLevels = totalLevels;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setactive(Boolean active) {
+        this.active= active;
     }
 
     public Long getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String gettemplateName() {
+        return templateName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getdescription() {
+        return description;
     }
 
-    public String getPhno() {
-        return phno;
+    public Integer gettotalLevels() {
+        return totalLevels;
     }
 
     public String getAddress() {
