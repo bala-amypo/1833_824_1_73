@@ -1,3 +1,10 @@
+
+
+
+
+
+
+@Entity
 public class WorkflowTemplate{
   private long id;
   private String templateName;
@@ -5,7 +12,8 @@ public class WorkflowTemplate{
   private Integer totalLevels;
   private Boolean active;
 
-  
+    @id
+    @GeneratedValue(GenerationType.IDENTITY)
     public void setId(Long id) {
         this.id = id;
     }
@@ -42,8 +50,8 @@ public class WorkflowTemplate{
         return totalLevels;
     }
 
-    public String getAddress() {
-        return address;
+    public Boolean getactive() {
+        return active;
     }
 
 }
