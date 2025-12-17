@@ -52,5 +52,11 @@ public class WorkflowStepConfig{
     public void setactive(String instructions) {
         this.instructions= instructions;
     }
+    public  WorkflowStepConfig(){
+
+    }
+    public  WorkflowStepConfig(){
+
+    }
 
 }
