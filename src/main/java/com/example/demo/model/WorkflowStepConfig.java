@@ -11,7 +11,7 @@ import jakarta.persistence.GenerationType;
 @Entity
 public class WorkflowStepConfig{
   @id
-  @GeneratedValue(GenerationType.IDENTITY)
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private long id;
 
   private Long templated;

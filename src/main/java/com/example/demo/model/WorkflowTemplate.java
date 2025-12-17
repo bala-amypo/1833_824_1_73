@@ -3,14 +3,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.coloumn;
+import jakarta.persistence.column;
 
 
 
 @Entity
 public class WorkflowTemplate{
   @id
-  @GeneratedValue(GenerationType.IDENTITY)
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private long id;
   @Column(unique=true)
   private String templateName;
@@ -60,7 +60,7 @@ public class WorkflowTemplate{
 
     }
     public  WorkflowTemplate(){
-        
+
     }
 
 }

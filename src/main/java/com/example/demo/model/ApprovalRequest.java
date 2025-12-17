@@ -6,8 +6,8 @@ import jakarta.persistence.GenerationType;
 import java.time.LocalDateTime;
 @Entity
 public class ApprovalRequest{
-    @id
-  @GeneratedValue(GenerationType.IDENTITY)
+    @Id
+  @GeneratedValue(strategy=GenerationType.IDENTITY)
   private long id;
   private Long templated;
    private Long requesterlid;
@@ -81,7 +81,7 @@ public class ApprovalRequest{
         this.createdAt=createdAt;
     }
     public ApprovalRequest(){
-        
+
     }
 
 }
