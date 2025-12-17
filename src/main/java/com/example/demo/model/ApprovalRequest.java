@@ -56,12 +56,15 @@ public class ApprovalRequest{
     public void setcurrentLevel(Integer currentLevel) {
         this.currentLevel=currentLevel;
     }
-     public Integer getcreatedAt() {
+     public LocalDateTime getcreatedAt() {
         return createdAt;
     }
 
-    public void setcreatedAt(Integer createdAt) {
-        this.createdAt=currentLevel;
+    public void setcreatedAt(LocalDateTime createdAt) {
+        this.createdAt=createdAt;
+    }
+    public ApprovalRequest(long id, Long templated,String requestTitle,String requestPayloadJson,String status, Integer currentLevel,LocalDateTime createdAt){
+        this
     }
 
 }
