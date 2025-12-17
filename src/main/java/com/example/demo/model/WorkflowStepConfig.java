@@ -39,18 +39,18 @@ public class WorkflowStepConfig{
     public void setlevelNumber(Integer levelNumber) {
         this.levelNumber = levelNumber;
     }
-    public Integer gettotalLevels() {
-        return totalLevels;
+    public String getapproverRole() {
+        return approverRole;
     }
-    public void settotalLevels(Integer totalLevels) {
-        this.totalLevels = totalLevels;
+    public void setapproverRole(String approverRole) {
+        this.approverRole= approverRole;
     }
-    public Boolean getactive() {
-        return active;
+    public String getinstructions() {
+        return instructions;
     }
 
-    public void setactive(Boolean active) {
-        this.active= active;
+    public void setactive(String instructions) {
+        this.instructions= instructions;
     }
 
 }
