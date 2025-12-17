@@ -15,9 +15,9 @@ public class WorkflowStepConfig{
   private long id;
   @Column(unique=true)
   private Long templated;
-  private String description;
-  private Integer totalLevels;
-  private Boolean active;
+  private Integer levelNumber;
+  private String approverRole;
+  private String instructions;
 
   
     public Long getId() {
@@ -26,8 +26,8 @@ public class WorkflowStepConfig{
     public void setId(Long id) {
         this.id = id;
     }
-    public String gettemplateName() {
-        return templateName;
+    public String gettemplated() {
+        return templated;
     }
 
     public void settemplateName(String  templatename) {
