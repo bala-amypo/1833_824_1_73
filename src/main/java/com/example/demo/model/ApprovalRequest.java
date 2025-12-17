@@ -1,19 +1,20 @@
 package com.example.demo.model;
-import.jakarta.persistence.Entity;
-import.jakarta.persistence.Id;
-import.jakarta.persistence.GeneratedValue;
-import.jakarta.persistence.GenerationType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 
 @Entity
 public class ApprovalRequest{
     @id
   @GeneratedValue(GenerationType.IDENTITY)
   private long id;
-  
   private Long templated;
   private String requestTitle;
   private String requestPayloadJson;
-  private String instructions;
+  private String status;
+  private Integer currentLevel;
+  private LocalDateTime createdAt;
 
   
     public Long getId() {
@@ -27,9 +28,9 @@ public class ApprovalRequest{
     }
 
     public void settemplated(Long templated) {
-        this.templated = templated;
+        this.templated = requestTitle;
     }
-    public Integer getlevelNumber() {
+    public String getrequestTitle() {
         return levelNumber;
     }
     public void setlevelNumber(Integer levelNumber) {
