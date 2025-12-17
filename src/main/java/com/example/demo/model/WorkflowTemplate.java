@@ -9,7 +9,7 @@ import jakarta.persistence.column;
 
 @Entity
 public class WorkflowTemplate{
-  @id
+  @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private long id;
   @Column(unique=true)
@@ -56,7 +56,7 @@ public class WorkflowTemplate{
       this.templateName=templateName;
       this.description=description;
       this.totalLevels=totalLevels;
-      this.activ=active;
+      this.active=active;
 
     }
     public  WorkflowTemplate(){

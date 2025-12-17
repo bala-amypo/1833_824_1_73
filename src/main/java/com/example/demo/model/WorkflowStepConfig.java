@@ -10,7 +10,7 @@ import jakarta.persistence.GenerationType;
 
 @Entity
 public class WorkflowStepConfig{
-  @id
+  @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private long id;
 
