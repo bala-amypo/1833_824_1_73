@@ -11,7 +11,7 @@ import jakarta.persistence.Column;
 public class WorkflowTemplate{
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private long id;
+  private Long id;
   @Column(unique=true)
   private String templateName;
   private String description;
@@ -51,7 +51,7 @@ public class WorkflowTemplate{
     public void setactive(Boolean active) {
         this.active= active;
     }
-    public  WorkflowTemplate(long id, String templateName, String description,Integer totalLevels, Boolean active){
+    public  WorkflowTemplate(Long id, String templateName, String description,Integer totalLevels, Boolean active){
       this.id=id;
       this.templateName=templateName;
       this.description=description;

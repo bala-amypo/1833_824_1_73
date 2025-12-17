@@ -12,7 +12,7 @@ import jakarta.persistence.GenerationType;
 public class WorkflowStepConfig{
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private long id;
+  private Long id;
 
   private Long templated;
   private Integer levelNumber;
@@ -52,7 +52,7 @@ public class WorkflowStepConfig{
     public void setactive(String instructions) {
         this.instructions= instructions;
     }
-    public  WorkflowStepConfig (long id, Long templated,Integer levelNumber, String approverRole, String instructions){
+    public  WorkflowStepConfig (Long id, Long templated,Integer levelNumber, String approverRole, String instructions){
       this.id=id;
       this.templated=templated;
       this.levelNumber=levelNumber;
