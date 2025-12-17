@@ -9,10 +9,10 @@ public class ApprovalRequest{
     @id
   @GeneratedValue(GenerationType.IDENTITY)
   private long id;
-  @Column(unique=true)
+  
   private Long templated;
-  private Integer levelNumber;
-  private String approverRole;
+  private String requestTitle;
+  private String requestPayloadJson;
   private String instructions;
 
   

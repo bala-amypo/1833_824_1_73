@@ -13,7 +13,7 @@ public class WorkflowStepConfig{
   @id
   @GeneratedValue(GenerationType.IDENTITY)
   private long id;
-  @Column(unique=true)
+
   private Long templated;
   private Integer levelNumber;
   private String approverRole;
