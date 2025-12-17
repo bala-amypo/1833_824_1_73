@@ -51,5 +51,8 @@ public class WorkflowTemplate{
     public void setactive(Boolean active) {
         this.active= active;
     }
+    public  WorkflowTemplate(){
+
+    }
 
 }

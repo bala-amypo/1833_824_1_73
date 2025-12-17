@@ -35,8 +35,8 @@ public class ApprovalRequest{
         return requesterlid;
     }
 
-    public void settemplated(Long templated) {
-        this.templated = templated;
+    public void setrequesterlid(Long requesterlid) {
+        this.requesterlid = requesterlid;
     }
     public String getrequestTitle() {
         return requestTitle;
@@ -74,7 +74,14 @@ public class ApprovalRequest{
     public ApprovalRequest(long id, Long templated,String requestTitle,String requestPayloadJson,String status, Integer currentLevel,LocalDateTime createdAt){
         this.id=id;
         this.templated=templated;
-        this.requesterlid
+        this.requesterlid=requesterlid;
+        this.requestTitle=requestTitle;
+        this.status=status;
+        this.currentLevel=currentLevel;
+        this.createdAt=createdAt;
+    }
+    public ApprovalRequest(){
+        
     }
 
 }
