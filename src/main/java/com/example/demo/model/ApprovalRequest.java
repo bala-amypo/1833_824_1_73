@@ -10,6 +10,7 @@ public class ApprovalRequest{
   @GeneratedValue(GenerationType.IDENTITY)
   private long id;
   private Long templated;
+   private Long requesterlid;
   private String requestTitle;
   private String requestPayloadJson;
   private String status;
@@ -25,6 +26,13 @@ public class ApprovalRequest{
     }
     public Long  gettemplated() {
         return templated;
+    }
+
+    public void settemplated(Long templated) {
+        this.templated = templated;
+    }
+    public Long  getrequesterlid() {
+        return requesterlid;
     }
 
     public void settemplated(Long templated) {
@@ -64,7 +72,9 @@ public class ApprovalRequest{
         this.createdAt=createdAt;
     }
     public ApprovalRequest(long id, Long templated,String requestTitle,String requestPayloadJson,String status, Integer currentLevel,LocalDateTime createdAt){
-        this
+        this.id=id;
+        this.templated=templated;
+        this.requesterlid
     }
 
 }
