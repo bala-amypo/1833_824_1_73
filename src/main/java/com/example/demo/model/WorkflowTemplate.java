@@ -8,8 +8,8 @@ import.jakarta.persistence.GenerationType;
 
 @Entity
 public class WorkflowTemplate{
-    @id
-    @GeneratedValue(GenerationType.IDENTITY)
+  @id
+  @GeneratedValue(GenerationType.IDENTITY)
   private long id;
   @Column(unique=true)
   private String templateName;
@@ -37,27 +37,18 @@ public class WorkflowTemplate{
     public void setdescription(String discription) {
         this.description = description;
     }
-
+    public Integer gettotalLevels() {
+        return totalLevels;
+    }
     public void settotalLevels(Integer totalLevels) {
         this.totalLevels = totalLevels;
+    }
+    public Boolean getactive() {
+        return active;
     }
 
     public void setactive(Boolean active) {
         this.active= active;
-    }
-
-    
-
-    
-
-    
-
-    public Integer gettotalLevels() {
-        return totalLevels;
-    }
-
-    public Boolean getactive() {
-        return active;
     }
 
 }
