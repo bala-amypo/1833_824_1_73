@@ -26,18 +26,18 @@ public class WorkflowStepConfig{
     public void setId(Long id) {
         this.id = id;
     }
-    public String gettemplated() {
+    public Long  gettemplated() {
         return templated;
     }
 
-    public void settemplateName(String  templatename) {
-        this.templateName = templateName;
+    public void settemplated(Long templated) {
+        this.templated = templated;
     }
-    public String getdescription() {
-        return description;
+    public Integer getlevelNumber() {
+        return levelNumber;
     }
-    public void setdescription(String discription) {
-        this.description = description;
+    public void setlevelNumber(Integer levelNumber) {
+        this.levelNumber = levelNumber;
     }
     public Integer gettotalLevels() {
         return totalLevels;
