@@ -3,7 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-
+import java.time.LocalDateTime;
 @Entity
 public class ApprovalRequest{
     @id
@@ -28,26 +28,40 @@ public class ApprovalRequest{
     }
 
     public void settemplated(Long templated) {
-        this.templated = requestTitle;
+        this.templated = templated;
     }
     public String getrequestTitle() {
-        return levelNumber;
+        return requestTitle;
     }
-    public void setlevelNumber(Integer levelNumber) {
-        this.levelNumber = levelNumber;
+    public void setrequestTitle(String requestTitle) {
+        this.requestTitle = requestTitle;
     }
-    public String getapproverRole() {
-        return approverRole;
+    public String getrequestPayloadJson() {
+        return requestPayloadJson;
     }
-    public void setapproverRole(String approverRole) {
-        this.approverRole= approverRole;
+    public void setrequestPayloadJson(String requestPayloadJson) {
+        this.requestPayloadJson= requestPayloadJson;
     }
-    public String getinstructions() {
-        return instructions;
+    public String getstatus() {
+        return status;
     }
 
-    public void setactive(String instructions) {
-        this.instructions= instructions;
+    public void setstatus(String status) {
+        this.status= status;
+    }
+    public Integer getcurrentLevel() {
+        return currentLevel;
+    }
+
+    public void setcurrentLevel(Integer currentLevel) {
+        this.currentLevel=currentLevel;
+    }
+     public Integer getcreatedAt() {
+        return createdAt;
+    }
+
+    public void setcreatedAt(Integer createdAt) {
+        this.createdAt=currentLevel;
     }
 
 }
