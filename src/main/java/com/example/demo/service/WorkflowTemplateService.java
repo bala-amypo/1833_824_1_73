@@ -1,21 +1,17 @@
-package com.example.collectiondb.service;
+package com.example.demo.service;
 
-import java.util.HashMap;
-import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.example.collectiondb.entity.studentEntity;
+import com.example.demo.entity.WorkflowTemplate;
 
 @Service
-public class studentService {
-    
-    Map<Long, studentEntity> studentData=new HashMap<>();
-
-    public studentEntity saveData(studentEntity student){
-        studentData.put(student.getId(), student);
-        return student;
-    }
+public class WorkflowTemplate {
+    createTemplate(WorkflowTemplate t)
+    getTemplateById(Long id)
+    getAllTemplates()
+    up
+   
 }
 
 
