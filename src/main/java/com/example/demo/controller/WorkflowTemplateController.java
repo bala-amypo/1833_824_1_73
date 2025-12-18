@@ -9,22 +9,38 @@ import com.example.demo.model.WorkflowTemplate ;
 import com.example.demo.service.AuditTrailRecordService;
 
 @RestController
-public class AuditTrailRecordController {
-    @Autowired
-    AuditTrailRecordService atrs;
+public class LocationController {
 
-    @PostMapping("/templates ")
-    public WorkflowTemplate addWorkflowTemplate (@RequestBody WorkflowTemplate  atr){
-        return atrs.createTemplate(atr);
+    @Autowired
+    WorkflowTemplateService lcs;
+
+    // for post the data
+    @PostMapping("/api/templates")
+    public Location addLocation(@Valid @RequestBody Location loc) {
+        return lcs.createLocation(loc);
+    }
+
+    // for get all the data in list view
+    @GetMapping
+    public List<Location> getAll() {
+        return lcs.getAllLocations();
     }
 
     @GetMapping("/{id}")
-    public int first(){
-        return atrs.getTemplateById();
+    public Location getStudent(@PathVariable Long id) {
+        return lcs.getViewByID(id);
     }
 
-    @GetMapping
-    public List<AuditTrailRecord> second(){
-        return atrs.getAllLogs();
+    @PutMapping("/{id}")
+    public Location updateStudent(
+            @PathVariable Long id,
+            @Valid @RequestBody Location student) {
+        return lcs.updateStudent(id, student);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteStudent(@PathVariable Long id) {
+        lcs.deleteStudent(id);
+        return ResponseEntity.ok("Student deleted successfully");
     }
 }

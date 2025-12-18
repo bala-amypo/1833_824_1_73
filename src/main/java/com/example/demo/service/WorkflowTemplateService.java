@@ -3,10 +3,10 @@ package com.example.demo.service;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.WorkflowTemplate;
+import com.example.demo.entity.WorkflowTemplateService ;
 
 @Service
-public class WorkflowTemplate {
+public class WorkflowTemplateService  {
     createTemplate(WorkflowTemplate t)
     getTemplateById(Long id)
     getAllTemplates()
@@ -20,4 +20,3 @@ public class WorkflowTemplate {
 
 
 
-studentService.java
