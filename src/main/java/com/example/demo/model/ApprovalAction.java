@@ -75,7 +75,7 @@ public class ApprovalAction{
       this.levelNumber=levelNumber;
       this.action= action;
       this.comments=comments;
-      this.actionDate=actionDat;
+      this.actionDate=actionDate;
     }
      public  ApprovalAction(){
 
