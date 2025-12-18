@@ -6,7 +6,7 @@ import com.example.demo.entity.User;
  import java.util.Long;
 
 @Repository
-public interface WorkflowConfigRepository extends JpaRepository<User, Long>{
+public  findByTemplatedOrderByLevelNumberAsc(Long templated){
 
 
 }
