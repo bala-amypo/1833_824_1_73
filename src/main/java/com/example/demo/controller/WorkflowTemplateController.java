@@ -17,7 +17,7 @@ public class LocationController {
     // for post the data
     @PostMapping("/api/templates")
     public WorkflowTemplate addWorkflowTemplate(@Valid @RequestBody WorkflowTemplate loc) {
-        return lcs.createWorkflowTemplate(loc);
+        return lcs.createTemplate(WorkflowTemplate t)(loc);
     }
 
     // for get all the data in list view
@@ -32,15 +32,11 @@ public class LocationController {
     }
 
     @PutMapping("/{id}")
-    public Location updateStudent(
+    public Location updateTemplate(
             @PathVariable Long id,
             @Valid @RequestBody Location student) {
         return lcs. updateTemplate(Long id,WorkflowTemplat t);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteStudent(@PathVariable Long id) {
-        lcs.deleteStudent(id);
-        return ResponseEntity.ok("Student deleted successfully");
-    }
+    
 }
