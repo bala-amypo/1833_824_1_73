@@ -69,7 +69,6 @@ public class ApprovalAction{
     
     public   ApprovalAction( Long id,Long requested,Long approverld,Integer levelNumber,String action,String comments,LocalDateTime actionDate){
       this.id=id;
-      this.templated=templated;
       this. requested= requested;
       this.approverld=approverld;
       this.levelNumber=levelNumber;
