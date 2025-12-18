@@ -65,16 +65,9 @@ public class ApprovalAction{
     public void setactionDate(LocalDateTime actionDate) {
          this.actionDate=actionDate;
      }
-    public  WorkflowTemplate(){
-      this.id=id;
-      this.templateName=templateName;
-      this.description=description;
-      this.totalLevels=totalLevels;
-      this.active=active;
-
-    }
+    
     public  WorkflowTemplate( Long id,Long requested,Long approverld,Integer levelNumber,String action,String comments,LocalDateTime actionDate){
-     this.id=id;
+      this.id=id;
       this.templated=templated;
       this. requested= requested;
       this.approverld=approverld;
