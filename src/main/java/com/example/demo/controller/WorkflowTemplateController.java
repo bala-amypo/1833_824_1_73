@@ -13,7 +13,7 @@ public class AuditTrailRecordController {
     @Autowired
     AuditTrailRecordService atrs;
 
-    @PostMapping("/AuditTrail")
+    @PostMapping("/create")
     public AuditTrailRecord addAuditTrailRecord(@RequestBody AuditTrailRecord atr){
         return atrs.logEvent(atr);
     }
