@@ -27,39 +27,42 @@ public class ApprovalAction{
     public void setId(Long id) {
         this.id = id;
     }
+
     public Long getrequested() {
         return requested;
     }
-
     public void setrequested(Long  requested) {
         this.requested = requested;
     }
+
     public Long getapproverld() {
         return approverld;
     }
     public void setapproverld(Long approverld) {
         this.approverld =approverld;
     }
+
     public Integer getlevelNumber() {
         return levelNumber;
     }
     public void setlevelNumber(Integer levelNumber) {
         this.levelNumber = levelNumber;
     }
+
     public String getaction() {
         return action;
     }
-
     public void setaction(String action) {
         this.action= action;
     }
+
     public String getcomments() {
         return comments;
     }
-
     public void setcomments(String comments) {
         this.comments= comments;
     }
+    
     public LocalDateTime getactionDate() {
          return actionDate;
      }
