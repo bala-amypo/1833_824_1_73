@@ -13,14 +13,14 @@ public class AuditTrailRecordController {
     @Autowired
     AuditTrailRecordService atrs;
 
-    @PostMapping("/api/templates ")
+    @PostMapping("/templates ")
     public WorkflowTemplate addWorkflowTemplate (@RequestBody WorkflowTemplate  atr){
         return atrs.createTemplate(atr);
     }
 
-    @GetMapping("/")
+    @GetMapping("/{id}")
     public int first(Long credentialId){
-        return atrs.getLogs();
+        return atrs.getTemplateById();
     }
 
     @GetMapping
