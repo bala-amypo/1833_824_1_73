@@ -59,7 +59,13 @@ public class ApprovalAction{
     public void setcomments(String comments) {
         this.comments= comments;
     }
-    public  WorkflowTemplate(Long id, String templateName, String description,Integer totalLevels, Boolean active){
+    public LocalDateTime getactionDate() {
+         return actionDate;
+     }
+    public void setactionDate(LocalDateTime actionDate) {
+         this.actionDate=actionDate;
+     }
+    public  WorkflowTemplate(){
       this.id=id;
       this.templateName=templateName;
       this.description=description;
@@ -67,8 +73,12 @@ public class ApprovalAction{
       this.active=active;
 
     }
-    public  WorkflowTemplate(){
-
+    public  WorkflowTemplate( Long id,Long requested,Long approverld,Integer levelNumber,String action,String comments,LocalDateTime actionDate){
+     this.id=id;
+      this.templated=templated;
+      this. requested= requested;
+      this.totalLevels=totalLevels;
+      this.active=active;
     }
 
 }
