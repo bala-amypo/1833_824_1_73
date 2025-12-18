@@ -4,6 +4,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Column;
+import java.time.LocalDateTime;
 
 
 
@@ -66,7 +67,7 @@ public class ApprovalAction{
          this.actionDate=actionDate;
      }
     
-    public  WorkflowTemplate( Long id,Long requested,Long approverld,Integer levelNumber,String action,String comments,LocalDateTime actionDate){
+    public   ApprovalAction( Long id,Long requested,Long approverld,Integer levelNumber,String action,String comments,LocalDateTime actionDate){
       this.id=id;
       this.templated=templated;
       this. requested= requested;
