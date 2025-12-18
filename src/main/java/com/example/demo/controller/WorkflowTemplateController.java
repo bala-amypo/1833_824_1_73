@@ -16,18 +16,18 @@ public class LocationController {
 
     // for post the data
     @PostMapping("/api/templates")
-    public Location addLocation(@Valid @RequestBody Location loc) {
-        return lcs.createLocation(loc);
+    public WorkflowTemplate addWorkflowTemplate(@Valid @RequestBody WorkflowTemplate loc) {
+        return lcs.createWorkflowTemplate(loc);
     }
 
     // for get all the data in list view
     @GetMapping
-    public List<Location> getAll() {
-        return lcs.getAllLocations();
+    public List<WorkflowTemplate> getAll() {
+        return lcs.getAllWorkflowTemplates();
     }
 
     @GetMapping("/{id}")
-    public Location getStudent(@PathVariable Long id) {
+    public Location getWorkflowTemplate(@PathVariable Long id) {
         return lcs.getViewByID(id);
     }
 
