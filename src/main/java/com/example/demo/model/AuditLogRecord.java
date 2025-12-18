@@ -51,14 +51,14 @@ public class AuditLogRecord{
          this.loggedAt=loggedAt;
      }
     
-    public  WorkflowTemplate(  Long id,Long requested,String eventType,String details, LocalDateTime loggedAt){
+    public AuditLogRecord(  Long id,Long requested,String eventType,String details, LocalDateTime loggedAt){
       this.id=id;
-  this.requested=requested;
-  private String eventType;
-  private String details;
-  private LocalDateTime loggedAt;
+      this.requested=requested;
+      this.eventType=eventType;
+      this.details=details;
+      this.loggedAt=loggedAt;
     }
-     public  ApprovalAction(){
+     public  AuditLogRecord(){
 
     }
 
