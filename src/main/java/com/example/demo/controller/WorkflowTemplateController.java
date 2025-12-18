@@ -20,7 +20,7 @@ public class AuditTrailRecordController {
 
     @GetMapping("/{id}")
     public int first(Long credentialId){
-        return atrs.getTemplateById();
+        return atrs.getTemplateById ();
     }
 
     @GetMapping
