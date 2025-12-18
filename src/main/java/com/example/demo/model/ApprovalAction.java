@@ -3,7 +3,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Column;
+
 import java.time.LocalDateTime;
 
 
@@ -13,7 +13,7 @@ public class ApprovalAction{
   @Id
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
-  @Column(unique=true)
+  
   private Long requested;
   private Long approverld;
   private Integer levelNumber;
