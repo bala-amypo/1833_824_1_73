@@ -26,31 +26,38 @@ public class ApprovalAction{
     public void setId(Long id) {
         this.id = id;
     }
-    public String getrequested() {
+    public Long getrequested() {
         return requested;
     }
 
-    public void setrequested(String  requested) {
+    public void setrequested(Long  requested) {
         this.requested = requested;
     }
-    public String getdescription() {
-        return description;
+    public Long getapproverld() {
+        return approverld;
     }
-    public void setdescription(String discription) {
-        this.description = description;
+    public void setapproverld(Long approverld) {
+        this.approverld =approverld;
     }
-    public Integer gettotalLevels() {
-        return totalLevels;
+    public Integer getlevelNumber() {
+        return levelNumber;
     }
-    public void settotalLevels(Integer totalLevels) {
-        this.totalLevels = totalLevels;
+    public void setlevelNumber(Integer levelNumber) {
+        this.levelNumber = levelNumber;
     }
-    public Boolean getactive() {
-        return active;
+    public String getaction() {
+        return action;
     }
 
-    public void setactive(Boolean active) {
-        this.active= active;
+    public void setaction(String action) {
+        this.action= action;
+    }
+    public String getcomments() {
+        return comments;
+    }
+
+    public void setcomments(String comments) {
+        this.comments= comments;
     }
     public  WorkflowTemplate(Long id, String templateName, String description,Integer totalLevels, Boolean active){
       this.id=id;
