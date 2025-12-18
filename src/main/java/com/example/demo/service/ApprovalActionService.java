@@ -7,7 +7,8 @@ import com.example.demo.entity.ApprovalActionService;
 
 @Service
 public class ApprovalActionService {
-    createStep(WorkflowStepConfig step)
+    createStep(WorkflowStepConfig step);
+    getStepsForTemplate(Long templateId);
     
 }
 
