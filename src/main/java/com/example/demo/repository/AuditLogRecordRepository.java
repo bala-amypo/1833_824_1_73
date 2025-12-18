@@ -6,7 +6,7 @@ import com.example.demo.entity.User;
  import java.util.Long;
 
 @Repository
-public  findByTemplatedOrderByLevelNumberAsc(Long templated){
+public  findByLevelAndAction(Integer LevelNumber,Sttring action){
 
 
 }
