@@ -6,7 +6,7 @@ import com.example.demo.entity.AuditLogRecord;
  import java.util.Long;
 
 @Repository
-public  findByLevelAndAction(Integer LevelNumber,Sttring action){
+public  findByLevelAndAction(Integer LevelNumber,String action){
 
 
 }
