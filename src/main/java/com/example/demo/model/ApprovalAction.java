@@ -13,10 +13,10 @@ public class ApprovalAction{
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
   @Column(unique=true)
-  private String templateName;
-  private String description;
-  private Integer totalLevels;
-  private Boolean active;
+  private Long requested;
+  private String eventType;
+  private String details;
+  private LocalDateTime active;
 
   
     public Long getId() {
