@@ -8,7 +8,8 @@ import com.example.demo.entity.ApprovalActionService;
 @Service
 public class ApprovalRequestService {
     createRequest(ApprovalRequestService req);
-    getRequest(Long templateId);
+    getRequestsByRequester(Long UserId);
+    getAllRequests();
     
 }
 
