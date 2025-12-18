@@ -39,7 +39,7 @@ public class AuditLogRecord{
         this.eventType =eventType;
     }
     public String getdetails() {
-        return levelNumber;
+        return details;
     }
     public void setdetails(String details) {
         this.details = details;
