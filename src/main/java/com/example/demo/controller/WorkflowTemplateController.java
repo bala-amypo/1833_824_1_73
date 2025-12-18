@@ -23,19 +23,19 @@ public class LocationController {
     // for get all the data in list view
     @GetMapping
     public List<WorkflowTemplate> getAll() {
-        return lcs.getAllWorkflowTemplates();
+        return lcs.getAllTemplates();
     }
 
     @GetMapping("/{id}")
     public Location getWorkflowTemplate(@PathVariable Long id) {
-        return lcs.getViewByID(id);
+        return lcs. getTemplateById(Long id);
     }
 
     @PutMapping("/{id}")
     public Location updateStudent(
             @PathVariable Long id,
             @Valid @RequestBody Location student) {
-        return lcs.updateStudent(id, student);
+        return lcs. updateTemplate(Long id,WorkflowTemplat t);
     }
 
     @DeleteMapping("/{id}")
