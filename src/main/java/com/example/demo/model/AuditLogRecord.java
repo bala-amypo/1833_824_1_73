@@ -45,21 +45,18 @@ public class AuditLogRecord{
     }
    
     public LocalDateTime getloggedAt() {
-         return actionDate;
+         return loggedAt;
      }
-    public void setactionDate(LocalDateTime actionDate) {
-         this.actionDate=actionDate;
+    public void setactionDate(LocalDateTime loggedAt) {
+         this.loggedAt=loggedAt;
      }
     
-    public  WorkflowTemplate( Long id,Long requested,Long approverld,Integer levelNumber,String action,String comments,LocalDateTime actionDate){
+    public  WorkflowTemplate(  Long id,Long requested,String eventType,String details, LocalDateTime loggedAt){
       this.id=id;
-      this.templated=templated;
-      this. requested= requested;
-      this.approverld=approverld;
-      this.levelNumber=levelNumber;
-      this.action= action;
-      this.comments=comments;
-      this.actionDate=actionDat;
+  this.requested=requested;
+  private String eventType;
+  private String details;
+  private LocalDateTime loggedAt;
     }
      public  ApprovalAction(){
 
