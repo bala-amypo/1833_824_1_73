@@ -77,8 +77,14 @@ public class ApprovalAction{
      this.id=id;
       this.templated=templated;
       this. requested= requested;
-      this.totalLevels=totalLevels;
-      this.active=active;
+      this.approverld=approverld;
+      this.levelNumber=levelNumber;
+      this.action= action;
+      this.comments=comments;
+      this.actionDate=actionDat;
+    }
+     public  ApprovalAction(){
+
     }
 
 }
