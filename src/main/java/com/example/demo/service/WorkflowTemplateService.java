@@ -10,7 +10,8 @@ public class WorkflowTemplate {
     createTemplate(WorkflowTemplate t)
     getTemplateById(Long id)
     getAllTemplates()
-    up
+    updateTemplate(Long id,WorkflowTemplat t)
+    activateTemplate(Long id,boolean active)
    
 }
 
