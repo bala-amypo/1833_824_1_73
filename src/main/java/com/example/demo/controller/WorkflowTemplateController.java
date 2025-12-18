@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.demo.entity.WorkflowTemplate ;
+import com.example.demo.model.WorkflowTemplate ;
 import com.example.demo.service.AuditTrailRecordService;
 
 @RestController
@@ -14,7 +14,7 @@ public class AuditTrailRecordController {
     AuditTrailRecordService atrs;
 
     @PostMapping("/api/templates ")
-    public WorkflowTemplate addWorkflowTemplate (@RequestBody AuditTrailRecord atr){
+    public WorkflowTemplate addWorkflowTemplate (@RequestBody WorkflowTemplate  atr){
         return atrs.logEvent(atr);
     }
 
