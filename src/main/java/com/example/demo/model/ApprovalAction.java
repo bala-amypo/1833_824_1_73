@@ -14,10 +14,11 @@ public class ApprovalAction{
   private Long id;
   @Column(unique=true)
   private Long requested;
-  private String eventType;
-  private String details;
-  private LocalDateTime active;
-
+  private Long approverld;
+  private Integer levelNumber;
+  private String action;
+  private String comments;
+  private LocalDateTime actionDate;
   
     public Long getId() {
         return id;
@@ -25,12 +26,12 @@ public class ApprovalAction{
     public void setId(Long id) {
         this.id = id;
     }
-    public String gettemplateName() {
-        return templateName;
+    public String getrequested() {
+        return requested;
     }
 
-    public void settemplateName(String  templatename) {
-        this.templateName = templateName;
+    public void setrequested(String  requested) {
+        this.requested = requested;
     }
     public String getdescription() {
         return description;
