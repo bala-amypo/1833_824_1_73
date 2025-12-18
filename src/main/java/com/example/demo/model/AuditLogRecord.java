@@ -14,11 +14,9 @@ public class AuditLogRecord{
   private Long id;
   @Column(unique=true)
   private Long requested;
-  private Long eventType;
-  private Integer levelNumber;
-  private String action;
-  private String comments;
-  private LocalDateTime actionDate;
+  private String eventType;
+  private String details;
+  private LocalDateTime loggedAt;
   
     public Long getId() {
         return id;
@@ -33,33 +31,20 @@ public class AuditLogRecord{
     public void setrequested(Long  requested) {
         this.requested = requested;
     }
-    public Long getapproverld() {
-        return approverld;
+    public String geteventType() {
+        return eventType;
     }
-    public void setapproverld(Long approverld) {
-        this.approverld =approverld;
+    public void seteventType(String eventType) {
+        this.eventType =eventType;
     }
-    public Integer getlevelNumber() {
+    public String getdetails() {
         return levelNumber;
     }
-    public void setlevelNumber(Integer levelNumber) {
-        this.levelNumber = levelNumber;
+    public void setdetails(String details) {
+        this.details = details;
     }
-    public String getaction() {
-        return action;
-    }
-
-    public void setaction(String action) {
-        this.action= action;
-    }
-    public String getcomments() {
-        return comments;
-    }
-
-    public void setcomments(String comments) {
-        this.comments= comments;
-    }
-    public LocalDateTime getactionDate() {
+   
+    public LocalDateTime getloggedAt() {
          return actionDate;
      }
     public void setactionDate(LocalDateTime actionDate) {
