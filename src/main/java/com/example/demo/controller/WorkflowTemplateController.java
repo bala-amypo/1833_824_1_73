@@ -15,7 +15,7 @@ public class AuditTrailRecordController {
 
     @PostMapping("/api/templates ")
     public WorkflowTemplate addWorkflowTemplate (@RequestBody WorkflowTemplate  atr){
-        return atrs.logEvent(atr);
+        return atrs.createTemplate(atr);
     }
 
     @GetMapping("/")
