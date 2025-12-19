@@ -1,22 +1,17 @@
 package com.example.demo.service;
 
+import com.example.demo.entity.WorkflowTemplate;
+import java.util.List;
 
-import org.springframework.stereotype.Service;
+public interface WorkflowTemplateService {
 
-import com.example.demo.entity.WorkflowTemplateService ;
+    WorkflowTemplate createTemplate(WorkflowTemplate template);
 
-@Service
-public interface WorkflowTemplateService  {
-   WorkflowTemplate  createTemplate(WorkflowTemplate t);
     WorkflowTemplate getTemplateById(Long id);
-    WorkflowTemplate getAllTemplates();
-    WorkflowTemplate updateTemplate(Long id,WorkflowTemplat t);
-    WorkflowTemplate activateTemplate(Long id,boolean active);
-   
+
+    List<WorkflowTemplate> getAllTemplates();
+
+    WorkflowTemplate updateTemplate(Long id, WorkflowTemplate template);
+
+    void deleteTemplate(Long id);
 }
-
-
-
-
-
-

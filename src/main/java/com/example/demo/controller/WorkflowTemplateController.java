@@ -1,42 +1,45 @@
-// package com.example.demo.controller;
+package com.example.demo.controller;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RestController;
+import com.example.demo.entity.WorkflowTemplate;
+import com.example.demo.service.WorkflowTemplateService;
+import org.springframework.web.bind.annotation.*;
 
-// import com.example.demo.model.WorkflowTemplate ;
-// import com.example.demo.service.AuditTrailRecordService;
+import java.util.List;
 
-// @RestController
-// public class WorkflowTemplateController {
+@RestController
+@RequestMapping("/api/workflow-templates")
+public class WorkflowTemplateController {
 
-//     @Autowired
-//     WorkflowTemplateService lcs;
+    private final WorkflowTemplateService service;
 
-//     // for post the data
-//     @PostMapping("/api/templates")
-//     public WorkflowTemplate addWorkflowTemplate(@Valid @RequestBody WorkflowTemplate loc) {
-//         return lcs.createTemplate(WorkflowTemplate t)(loc);
-//     }
+    public WorkflowTemplateController(WorkflowTemplateService service) {
+        this.service = service;
+    }
 
-//     // for get all the data in list view
-//     @GetMapping
-//     public List<WorkflowTemplate> getAll() {
-//         return lcs.getAllTemplates();
-//     }
+    @PostMapping
+    public WorkflowTemplate create(@RequestBody WorkflowTemplate template) {
+        return service.createTemplate(template);
+    }
 
-//     @GetMapping("/{id}")
-//     public Location getWorkflowTemplate(@PathVariable Long id) {
-//         return lcs. getTemplateById(Long id);
-//     }
+    @GetMapping("/{id}")
+    public WorkflowTemplate getById(@PathVariable Long id) {
+        return service.getTemplateById(id);
+    }
 
-//     @PutMapping("/{id}")
-//     public Location updateTemplate(
-//             @PathVariable Long id,
-//             @Valid @RequestBody Location student) {
-//         return lcs. updateTemplate(Long id,WorkflowTemplat t);
-//     }
+    @GetMapping
+    public List<WorkflowTemplate> getAll() {
+        return service.getAllTemplates();
+    }
 
-    
-// }
+    @PutMapping("/{id}")
+    public WorkflowTemplate update(
+            @PathVariable Long id,
+            @RequestBody WorkflowTemplate template) {
+        return service.updateTemplate(id, template);
+    }
+
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        service.deleteTemplate(id);
+    }
+}
