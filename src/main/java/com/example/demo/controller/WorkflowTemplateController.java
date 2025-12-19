@@ -13,31 +13,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/templates")
-@Tag(name = "Workflow Template API", description = "APIs for managing workflow templates")
+@Tag(name = "Workflow Template")
 public class WorkflowTemplateController {
 
-    private final WorkflowTemplateService service;
+    private final WorkflowTemplateService workflowTemplateService;
 
-    public WorkflowTemplateController(WorkflowTemplateService service) {
-        this.service = service;
+    public WorkflowTemplateController(WorkflowTemplateService workflowTemplateService) {
+        this.workflowTemplateService = workflowTemplateService;
     }
 
     @Operation(summary = "Create workflow template")
     @PostMapping("/")
     public WorkflowTemplate createTemplate(@RequestBody WorkflowTemplate template) {
-        return service.createTemplate(template);
+        return workflowTemplateService.createTemplate(template);
     }
 
-    @Operation(summary = "Get workflow template by ID")
+    @Operation(summary = "Get workflow template by id")
     @GetMapping("/{id}")
-    public WorkflowTemplate getTemplate(@PathVariable Long id) {
-        return service.getTemplateById(id);
+    public Optional<WorkflowTemplate> getTemplateById(@PathVariable Long id) {
+        return workflowTemplateService.getTemplateById(id);
     }
 
     @Operation(summary = "Update workflow template")
@@ -45,20 +45,12 @@ public class WorkflowTemplateController {
     public WorkflowTemplate updateTemplate(
             @PathVariable Long id,
             @RequestBody WorkflowTemplate template) {
-        return service.updateTemplate(id, template);
+        return workflowTemplateService.updateTemplate(id, template);
     }
 
-    @Operation(summary = "List all workflow templates")
+    @Operation(summary = "Get all workflow templates")
     @GetMapping("/")
-    public List<WorkflowTemplate> listTemplates() {
-        return service.getAllTemplates();
-    }
-
-    @Operation(summary = "Activate or deactivate workflow template")
-    @PutMapping("/{id}/activate")
-    public WorkflowTemplate activateTemplate(
-            @PathVariable Long id,
-            @RequestParam boolean active) {
-        return service.activateTemplate(id, active);
+    public List<WorkflowTemplate> getAllTemplates() {
+        return workflowTemplateService.getAllTemplates();
     }
 }
