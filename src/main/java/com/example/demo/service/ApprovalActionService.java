@@ -7,7 +7,7 @@ import com.example.demo.model.ApprovalActionService;
 
 @Service
 public class ApprovalActionService {
-    recordAction
+    recordAction(ApprovalAction action );
     
 }
 
