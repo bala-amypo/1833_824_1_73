@@ -6,6 +6,7 @@ import com.example.demo.model.ApprovalActionRepository;
  import java.util.Lang;
 
 @Repository
+
 public  findByLevelAndAction(Integer LevelNumber,String action){
 
 
