@@ -6,7 +6,9 @@ import com.example.demo.model.WorkflowStepConfig;
  import java.util.Lang;
 
 @Repository
+public class WorkflowStepConfigRepository{
 public  findByTemplatedOrderByLevelNumberAsc(Long templated){
 
+}
 
 }
