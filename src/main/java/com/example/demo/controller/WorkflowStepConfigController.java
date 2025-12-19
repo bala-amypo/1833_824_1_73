@@ -11,6 +11,10 @@ public class  WorkflowStepConfigController{
     WorkflowStepConfigController abc;
     @PostMapping("/api/steps")
     
+    @GetMapping("/api/{templated}")
+    public Location WorkflowStepConfigService (){
+        return lcs. getTemplateById(Long id);
+    }
 
 
 }
