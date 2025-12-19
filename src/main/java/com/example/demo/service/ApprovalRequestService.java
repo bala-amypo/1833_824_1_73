@@ -6,8 +6,8 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.ApprovalRequestService;
 
 @Service
-public class ApprovalRequestService {
-    createRequest(ApprovalRequestService req);
+public interface ApprovalRequestService {
+  ApprovalRequestService  createRequest(ApprovalRequestService req);
     getRequestsByRequester(Long UserId);
     getAllRequests();
     

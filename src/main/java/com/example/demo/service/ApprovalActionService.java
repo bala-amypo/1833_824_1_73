@@ -5,9 +5,8 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.model.ApprovalActionService;
 
-@Service
-public class ApprovalActionService {
-    recordAction(ApprovalAction action );
+public interface ApprovalActionService {
+   ApprovalAction recordAction(ApprovalAction action );
     
 }
 
