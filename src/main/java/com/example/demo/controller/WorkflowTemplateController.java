@@ -9,7 +9,7 @@ import com.example.demo.model.WorkflowTemplate ;
 import com.example.demo.service.AuditTrailRecordService;
 
 @RestController
-public class  {
+public class WorkflowTemplateController {
 
     @Autowired
     WorkflowTemplateService lcs;
