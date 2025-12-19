@@ -13,10 +13,10 @@ public class  WorkflowStepConfigController{
 
     @PostMapping("/api/steps")
     public WorkflowStepConfig createStep(@RequestBody xyz) {
-        return abc.(xyz);
+        return abc.save(xyz);
     }
    
-    @GetMapping(/template/{templated})
+    @GetMapping("/template/{templated}")
     public List<WorkflowStepConfigService> getStepsForTemplte(Long templated) {
         return abc.findByStepsForTemplte(templated);
 
