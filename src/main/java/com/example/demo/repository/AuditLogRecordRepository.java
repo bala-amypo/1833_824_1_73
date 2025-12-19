@@ -6,7 +6,9 @@ import com.example.demo.entity.AuditLogRecord;
  import java.util.Lang;
 
 @Repository
-public  findByLevelAndAction(Long requested){
+public class AuditLogRecordRepository{
+   public  findByLevelAndAction(Long requested){
 
 
+   }
 }
