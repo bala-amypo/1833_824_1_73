@@ -7,8 +7,7 @@ import com.example.demo.model.ApprovalActionService;
 
 @Service
 public class ApprovalActionService {
-    createStep(WorkflowStepConfig step);
-    getStepsForTemplate(Long templateId);
+    recordAction
     
 }
 
