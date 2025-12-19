@@ -3,7 +3,7 @@ package com.example.demo.service;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.WorkflowStepConfigService;
+import com.example.demo.model.WorkflowStepConfigService;
 
 @Service
 public class WorkflowStepConfigService  {

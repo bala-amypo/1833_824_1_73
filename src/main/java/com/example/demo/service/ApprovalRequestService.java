@@ -3,7 +3,7 @@ package com.example.demo.service;
 
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entity.ApprovalRequestService;
+import com.example.demo.model.ApprovalRequestService;
 
 @Service
 public class ApprovalRequestService {
