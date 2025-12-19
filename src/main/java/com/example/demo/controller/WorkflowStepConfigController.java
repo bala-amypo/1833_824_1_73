@@ -8,15 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class  WorkflowStepConfigController{
-    WorkflowStepConfigController abc;
+    @Autowired
+    private WorkflowStepConfigService abc;
 
     @PostMapping("/api/steps")
-    public WorkflowStepConfigService addWorkflowStepConfigService(@Valid @RequestBody WorkflowStepConfigService xyz) {
-        return abc.createStep(WorkFlowStepConfig xyz);
+    public WorkflowStepConfig createStep(@RequestBody xyz) {
+        return abc.(xyz);
     }
    
      @GetMapping
-    public List<WorkflowStepConfigService> getAll() {
+    public List<WorkflowStepConfigService> getStepsForTemplte() {
         return abc. getStepsForTemplte(Long templated);
 
 }
