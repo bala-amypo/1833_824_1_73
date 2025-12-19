@@ -7,7 +7,8 @@ import com.example.demo.model.ApprovalAction;
 
 @Repository
 public class ApprovalActionrepository{
-   public  findByLevelAndAction(Integer LevelNumber,String action){
+    
+   public  findBy(Integer LevelNumber,String action){
 
 
     }
