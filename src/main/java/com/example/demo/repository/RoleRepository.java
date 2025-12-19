@@ -6,8 +6,9 @@ import com.example.demo.model.Role;
  import java.util.Lang;
 
 @Repository
-pubblic
-public Optional<Role>findByName(String name){
+public class RoleRepository{
+    public Optional<Role>findByName(String name){
 
 
+ }
 }
