@@ -16,8 +16,8 @@ public class  WorkflowStepConfigController{
         return abc.(xyz);
     }
    
-     @GetMapping
-    public List<WorkflowStepConfigService> getStepsForTemplte() {
-        return abc. getStepsForTemplte(Long templated);
+    @GetMapping(/template/{templated})
+    public List<WorkflowStepConfigService> getStepsForTemplte(Long templated) {
+        return abc.findByStepsForTemplte(templated);
 
 }
