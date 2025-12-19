@@ -1,9 +1,20 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
+import jakarta.persistence.Id;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Column;
 
 @Entity
-@Table(name = "workflow_templates")
+@Table(
+    name = "workflow_template",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = "templateName")
+    }
+)
 public class WorkflowTemplate {
 
     @Id
@@ -11,30 +22,65 @@ public class WorkflowTemplate {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String name;
+    private String templateName;
 
     private String description;
 
-    private boolean active = true;
+    private Integer totalLevels;
 
-    public WorkflowTemplate() {}
+    private Boolean active;
 
-    public WorkflowTemplate(String name, String description) {
-        this.name = name;
-        this.description = description;
-        this.active = true;
+    public WorkflowTemplate() {
     }
 
-    // Getters and Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    public WorkflowTemplate(Long id, String templateName,
+                            String description,
+                            Integer totalLevels,
+                            Boolean active) {
+        this.id = id;
+        this.templateName = templateName;
+        this.description = description;
+        this.totalLevels = totalLevels;
+        this.active = active;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public Long getId() {
+        return id;
+    }
 
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public boolean isActive() { return active; }
-    public void setActive(boolean active) { this.active = active; }
+    public String getTemplateName() {
+        return templateName;
+    }
+
+    public void setTemplateName(String templateName) {
+        this.templateName = templateName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getTotalLevels() {
+        return totalLevels;
+    }
+
+    public void setTotalLevels(Integer totalLevels) {
+        this.totalLevels = totalLevels;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
 }
