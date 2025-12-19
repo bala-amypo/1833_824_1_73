@@ -7,9 +7,9 @@ import com.example.demo.model.ApprovalRequestService;
 
 @Service
 public interface ApprovalRequestService {
-  ApprovalRequestService  createRequest(ApprovalRequestService req);
-    getRequestsByRequester(Long UserId);
-    getAllRequests();
+    ApprovalRequest  createRequest(ApprovalRequestService req);
+    ApprovalRequest getRequestsByRequester(Long UserId);
+    ApprovalRequest getAllRequests();
     
 }
 

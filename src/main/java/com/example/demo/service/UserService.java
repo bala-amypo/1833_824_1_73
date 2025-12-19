@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model. UserService;
 
 @Service
-public class UserService {
-    registerUser(User user,String roleName);
-    findByUsername(String username);
+public interface UserService {
+   User registerUser(User user,String roleName);
+   User findByUsername(String username);
     
 }
 

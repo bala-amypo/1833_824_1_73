@@ -6,9 +6,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.WorkflowStepConfigService;
 
 @Service
-public class WorkflowStepConfigService  {
-    createStep(WorkFlowStepConfig step);
-    getStepsForTemplte(Long templated);
+public interface WorkflowStepConfigService  {
+   WorkflowStepConfig createStep(WorkFlowStepConfig step);
+   WorkflowStepConfig getStepsForTemplte(Long templated);
 
    
 }
