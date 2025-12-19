@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class  WorkflowStepConfigController{
     WorkflowStepConfigController abc;
     @PostMapping("/api/steps")
-    
+    public WorkflowStepConfigService addWorkflowStepConfigService(@Valid @RequestBody WorkflowStepConfigService xyz) {
+        return abc.createStep(WorkFlowStepConfig step);
+    }
    
      @GetMapping
     public List<WorkflowStepConfigService> getAll() {
