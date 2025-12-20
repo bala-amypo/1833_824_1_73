@@ -12,10 +12,10 @@ public class WorkflowTemplate{
   @GeneratedValue(strategy=GenerationType.IDENTITY)
   private Long id;
 
-  private String usernameName;
-  private String description;
-  private Integer totalLevels;
-  private Boolean active;
+  private String username;
+  private String email;
+  private String password;
+  private String roles;
 
   
     public Long getId() {
