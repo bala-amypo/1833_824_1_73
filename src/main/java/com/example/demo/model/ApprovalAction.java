@@ -1,91 +1,92 @@
 package com.example.demo.model;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
-public class ApprovalAction{
-  @Id
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private Long id;
-  private Long requested;
-  private Long approverId;
-  private String requestTitle;
-  private String requestPayloadJson;
-  private String status;
-  private Integer currentLevel;
-  private LocalDateTime createdAt;
+public class ApprovalAction {
 
-  
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private Long requested;
+    private Long approverId;
+    private Integer levelNumber;
+    private String action;
+    private String comments;
+    private LocalDateTime actionDate;
+
+    public ApprovalAction() {}
+
+    public ApprovalAction(Long id, Long requested, Long approverId,
+                          Integer levelNumber, String action,
+                          String comments, LocalDateTime actionDate) {
+        this.id = id;
+        this.requested = requested;
+        this.approverId = approverId;
+        this.levelNumber = levelNumber;
+        this.action = action;
+        this.comments = comments;
+        this.actionDate = actionDate;
+    }
+
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
 
-    public Long  gettemplated() {
-        return templated;
-    }
-    public void settemplated(Long templated) {
-        this.templated = templated;
+    public Long getRequested() {
+        return requested;
     }
 
-    public Long  getrequesterlid() {
-        return requesterlid;
-    }
-    public void setrequesterlid(Long requesterlid) {
-        this.requesterlid = requesterlid;
+    public void setRequested(Long requested) {
+        this.requested = requested;
     }
 
-    public String getrequestTitle() {
-        return requestTitle;
-    }
-    public void setrequestTitle(String requestTitle) {
-        this.requestTitle = requestTitle;
+    public Long getApproverId() {
+        return approverId;
     }
 
-    public String getrequestPayloadJson() {
-        return requestPayloadJson;
-    }
-    public void setrequestPayloadJson(String requestPayloadJson) {
-        this.requestPayloadJson= requestPayloadJson;
+    public void setApproverId(Long approverId) {
+        this.approverId = approverId;
     }
 
-    public String getstatus() {
-        return status;
-    }
-    public void setstatus(String status) {
-        this.status= status;
+    public Integer getLevelNumber() {
+        return levelNumber;
     }
 
-    public Integer getcurrentLevel() {
-        return currentLevel;
-    }
-    public void setcurrentLevel(Integer currentLevel) {
-        this.currentLevel=currentLevel;
+    public void setLevelNumber(Integer levelNumber) {
+        this.levelNumber = levelNumber;
     }
 
-     public LocalDateTime getcreatedAt() {
-        return createdAt;
-    }
-    public void setcreatedAt(LocalDateTime createdAt) {
-        this.createdAt=createdAt;
+    public String getAction() {
+        return action;
     }
 
-    public ApprovalRequest(Long id, Long templated,String requestTitle,String requestPayloadJson,String status, Integer currentLevel,LocalDateTime createdAt){
-        this.id=id;
-        this.templated=templated;
-        this.requesterlid=requesterlid;
-        this.requestTitle=requestTitle;
-        this.status=status;
-        this.currentLevel=currentLevel;
-        this.createdAt=createdAt;
-    }
-    public ApprovalRequest(){
-
+    public void setAction(String action) {
+        this.action = action;
     }
 
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public LocalDateTime getActionDate() {
+        return actionDate;
+    }
+
+    public void setActionDate(LocalDateTime actionDate) {
+        this.actionDate = actionDate;
+    }
 }
