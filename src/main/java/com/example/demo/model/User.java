@@ -1,67 +1,69 @@
 package com.example.demo.model;
+
 import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-
-
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import java.util.Set;
 
 @Entity
-public class WorkflowTemplate{
-  @Id
-  @GeneratedValue(strategy=GenerationType.IDENTITY)
-  private Long id;
+public class User {
 
-  private String username;
-  private String email;
-  private String password;
-  private String roles;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-  
+    private String username;
+    private String email;
+    private String password;
+
+    @ManyToMany
+    private Set<Role> roles;
+
+    public User() {
+    }
+
+    public User(String username, String email, String password, Set<Role> roles) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
+
     public Long getId() {
         return id;
     }
-    public void setId(Long id) {
-        this.id = id;
-    }
-    public String gettemplateName() {
-        return templateName;
+
+    public String getUsername() {
+        return username;
     }
 
-    public void settemplateName(String  templatename) {
-        this.templateName = templateName;
-    }
-    public String getdescription() {
-        return description;
-    }
-    public void setdescription(String discription) {
-        this.description = description;
-    }
-    public Integer gettotalLevels() {
-        return totalLevels;
-    }
-    public void settotalLevels(Integer totalLevels) {
-        this.totalLevels = totalLevels;
-    }
-    public Boolean getactive() {
-        return active;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setactive(Boolean active) {
-        this.active= active;
+    public String getEmail() {
+        return email;
     }
-    public  WorkflowTemplate(Long id, String templateName, String description,Integer totalLevels, Boolean active){
-      this.id=id;
-      this.templateName=templateName;
-      this.description=description;
-      this.totalLevels=totalLevels;
-      this.active=active;
-
-    }
-    public  WorkflowTemplate(){
-
+    
+    public void setEmail(String email) {
+        this.email = email;
     }
 
+    public String getPassword() {
+        return password;
+    }
+    
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+    
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }
-
-
