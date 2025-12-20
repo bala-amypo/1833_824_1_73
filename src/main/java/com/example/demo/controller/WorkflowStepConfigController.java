@@ -28,8 +28,8 @@ public class WorkflowStepConfigController {
 
     // GET: List all steps by template ID
     @GetMapping("/template/{templateId}")
-    public ResponseEntity<List<WorkflowStepConfig>> getStepsByTemplate(@PathVariable Long templateId) {
-        List<WorkflowStepConfig> steps = stepService.getStepsByTemplateId(templateId);
+    public ResponseEntity<List<WorkflowStepConfig>> getStepsByTemplate(@PathVariable("templateId") Long templateId) {
+        List<WorkflowStepConfig> steps = stepService.getStepsForTemplate(templateId);
         return ResponseEntity.ok(steps);
     }
 }
