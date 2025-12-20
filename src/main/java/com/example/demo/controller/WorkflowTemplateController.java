@@ -1,50 +1,50 @@
-// package com.example.demo.controller;
+package com.example.demo.controller;
 
-// import jakarta.validation.Valid;
+import com.example.demo.model.WorkflowTemplate;
+import com.example.demo.service.WorkflowTemplateService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import java.util.List;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.RestController;
-// import org.springframework.web.bind.annotation.PostMapping;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PutMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.RequestBody;
-// import org.springframework.web.bind.annotation.RequestMapping;
+@RestController
+@RequestMapping("/api/templates")
+@Tag(name = "WorkflowTemplate")
+public class WorkflowTemplateController {
 
-// import com.example.demo.model.WorkflowTemplate;
-// import com.example.demo.service.WorkflowTemplateService;
+    private final WorkflowTemplateService workflowTemplateService;
 
-// import java.util.List;
-// import java.util.Optional;
+    public WorkflowTemplateController(WorkflowTemplateService workflowTemplateService) {
+        this.workflowTemplateService = workflowTemplateService;
+    }
 
-// @RestController
-// @RequestMapping("/api/templates")
-// public class WorkflowTemplateController {
+    @PostMapping
+    @Operation(summary = "Create template")
+    public WorkflowTemplate createTemplate(@RequestBody WorkflowTemplate t) {
+        return workflowTemplateService.createTemplate(t);
+    }
 
-//     @Autowired
-//     WorkflowTemplateService wts;
+    @GetMapping("/{id}")
+    @Operation(summary = "Get template by id")
+    public WorkflowTemplate getTemplateById(@PathVariable Long id) {
+        return workflowTemplateService.getTemplateById(id);
+    }
 
-//     // for post the data
-//     @PostMapping
-//     public WorkflowTemplate createTemplate(@Valid @RequestBody WorkflowTemplate template) {
-//         return wts.createTemplate(template);
-//     }
+    @PutMapping("/{id}")
+    @Operation(summary = "Update template")
+    public WorkflowTemplate updateTemplate(@PathVariable Long id, @RequestBody WorkflowTemplate t) {
+        return workflowTemplateService.updateTemplate(id, t);
+    }
 
-//     // for get all the data in list view
-//     @GetMapping
-//     public List<WorkflowTemplate> getAllTemplates() {
-//         return wts.getAllTemplates();
-//     }
-
-//     @GetMapping("/{id}")
-//     public Optional<WorkflowTemplate> getTemplateById(@PathVariable Long id) {
-//         return wts.getTemplateById(id);
-//     }
-
-//     @PutMapping("/{id}")
-//     public WorkflowTemplate updateTemplate(
-//             @PathVariable Long id,
-//             @Valid @RequestBody WorkflowTemplate template) {
-//         return wts.updateTemplate(id, template);
-//     }
-// }
+    @GetMapping
+    @Operation(summary = "List templates")
+    public List<WorkflowTemplate> getAllTemplates() {
+        return workflowTemplateService.getAllTemplates();
+    }
+}
