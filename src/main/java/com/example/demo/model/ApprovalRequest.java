@@ -85,7 +85,7 @@ public class ApprovalRequest{
         this.createdAt=createdAt;
     }
     public ApprovalRequest(){
-
+        this.status = "PENDING";
     }
 
 }
