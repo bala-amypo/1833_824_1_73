@@ -2,12 +2,11 @@ package com.example.demo.controller;
 
 import com.example.demo.model.User;
 import com.example.demo.service.UserService;
-import com.example.demo.dto.RegisterRequest;
-import com.example.demo.dto.AuthRequest;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/auth")
@@ -20,18 +19,12 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public User register(@RequestBody RegisterRequest request) {
-        User user = new User(
-                request.getUsername(),
-                request.getEmail(),
-                request.getPassword(),
-                null
-        );
-        return userService.registerUser(user, request.getRoleName());
+    public User register(@RequestBody User user, @RequestParam String roleName) {
+        return userService.registerUser(user, roleName);
     }
 
     @PostMapping("/login")
-    public User login(@RequestBody AuthRequest request) {
-        return userService.findByUsername(request.getUsername());
+    public User login(@RequestBody User user) {
+        return userService.findByUsername(user.getUsername());
     }
 }
