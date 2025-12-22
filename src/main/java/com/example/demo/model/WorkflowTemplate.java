@@ -25,29 +25,29 @@ public class WorkflowTemplate{
         this.id = id;
     }
     public String getTemplateName() {
-        return TemplateName;
+        return templateName;
     }
 
-    public void setTemplateName(String  emplatename) {
-        this.TemplateName = templateName;
+    public void setTemplateName(String  templatename) {
+        this.templateName = templateName;
     }
-    public String getescription() {
+    public String getDescription() {
         return description;
     }
-    public void setdescription(String discription) {
+    public void setDescription(String discription) {
         this.description = description;
     }
-    public Integer gettotalLevels() {
+    public Integer getTotalLevels() {
         return totalLevels;
     }
-    public void settotalLevels(Integer totalLevels) {
+    public void setTotalLevels(Integer totalLevels) {
         this.totalLevels = totalLevels;
     }
-    public Boolean getactive() {
+    public Boolean getActive() {
         return active;
     }
 
-    public void setactive(Boolean active) {
+    public void setActive(Boolean active) {
         this.active= active;
     }
     public  WorkflowTemplate(Long id, String templateName, String description,Integer totalLevels, Boolean active){

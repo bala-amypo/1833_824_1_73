@@ -22,30 +22,30 @@ public class AuditLogRecord{
     public void setId(Long id) {
         this.id = id;
     }
-    public Long getrequested() {
+    public Long getRequested() {
         return requested;
     }
 
-    public void setrequested(Long  requested) {
+    public void setRequested(Long  requested) {
         this.requested = requested;
     }
-    public String geteventType() {
+    public String getEventType() {
         return eventType;
     }
-    public void seteventType(String eventType) {
+    public void setEventType(String eventType) {
         this.eventType =eventType;
     }
-    public String getdetails() {
+    public String getDetails() {
         return details;
     }
-    public void setdetails(String details) {
+    public void setDetails(String details) {
         this.details = details;
     }
    
-    public LocalDateTime getloggedAt() {
+    public LocalDateTime getLoggedAt() {
          return loggedAt;
      }
-    public void setactionDate(LocalDateTime loggedAt) {
+    public void setLoggedAt(LocalDateTime loggedAt) {
          this.loggedAt=loggedAt;
      }
     

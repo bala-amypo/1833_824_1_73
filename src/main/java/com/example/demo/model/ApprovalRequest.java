@@ -26,52 +26,52 @@ public class ApprovalRequest{
         this.id = id;
     }
 
-    public Long  gettemplated() {
+    public Long  getTemplated() {
         return templated;
     }
-    public void settemplated(Long templated) {
+    public void setTemplated(Long templated) {
         this.templated = templated;
     }
 
-    public Long  getrequesterlid() {
+    public Long  getRequesterlid() {
         return requesterlid;
     }
-    public void setrequesterlid(Long requesterlid) {
+    public void setRequesterlid(Long requesterlid) {
         this.requesterlid = requesterlid;
     }
 
-    public String getrequestTitle() {
+    public String getRequestTitle() {
         return requestTitle;
     }
-    public void setrequestTitle(String requestTitle) {
+    public void setRequestTitle(String requestTitle) {
         this.requestTitle = requestTitle;
     }
 
-    public String getrequestPayloadJson() {
+    public String getRequestPayloadJson() {
         return requestPayloadJson;
     }
-    public void setrequestPayloadJson(String requestPayloadJson) {
+    public void setRequestPayloadJson(String requestPayloadJson) {
         this.requestPayloadJson= requestPayloadJson;
     }
 
-    public String getstatus() {
+    public String getStatus() {
         return status;
     }
-    public void setstatus(String status) {
+    public void setStatus(String status) {
         this.status= status;
     }
 
-    public Integer getcurrentLevel() {
+    public Integer getCurrentLevel() {
         return currentLevel;
     }
-    public void setcurrentLevel(Integer currentLevel) {
+    public void setCurrentLevel(Integer currentLevel) {
         this.currentLevel=currentLevel;
     }
 
-     public LocalDateTime getcreatedAt() {
+     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
-    public void setcreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt=createdAt;
     }
 

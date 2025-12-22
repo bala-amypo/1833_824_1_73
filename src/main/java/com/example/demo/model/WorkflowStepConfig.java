@@ -25,30 +25,30 @@ public class WorkflowStepConfig{
     public void setId(Long id) {
         this.id = id;
     }
-    public Long  gettemplated() {
+    public Long  getTemplated() {
         return templated;
     }
 
-    public void settemplated(Long templated) {
+    public void setTemplated(Long templated) {
         this.templated = templated;
     }
-    public Integer getlevelNumber() {
+    public Integer getLevelNumber() {
         return levelNumber;
     }
-    public void setlevelNumber(Integer levelNumber) {
+    public void setLevelNumber(Integer levelNumber) {
         this.levelNumber = levelNumber;
     }
-    public String getapproverRole() {
+    public String getApproverRole() {
         return approverRole;
     }
-    public void setapproverRole(String approverRole) {
+    public void setApproverRole(String approverRole) {
         this.approverRole= approverRole;
     }
-    public String getinstructions() {
+    public String getInstructions() {
         return instructions;
     }
 
-    public void setactive(String instructions) {
+    public void setActive(String instructions) {
         this.instructions= instructions;
     }
     public  WorkflowStepConfig (Long id, Long templated,Integer levelNumber, String approverRole, String instructions){
