@@ -19,14 +19,12 @@ public class WorkflowStepConfigController {
         this.stepService = stepService;
     }
 
-    // POST: Create a new workflow step
     @PostMapping
     public ResponseEntity<WorkflowStepConfig> createStep(@RequestBody WorkflowStepConfig step) {
         WorkflowStepConfig createdStep = stepService.createStep(step);
         return ResponseEntity.ok(createdStep);
     }
 
-    // GET: List all steps by template ID
     @GetMapping("/template/{templateId}")
     public ResponseEntity<List<WorkflowStepConfig>> getStepsByTemplate(@PathVariable("templateId") Long templateId) {
         List<WorkflowStepConfig> steps = stepService.getStepsForTemplate(templateId);
