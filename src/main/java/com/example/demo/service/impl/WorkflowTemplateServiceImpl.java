@@ -42,7 +42,7 @@ public class WorkflowTemplateServiceImpl implements WorkflowTemplateService {
         Optional<WorkflowTemplate> opt = workflowTemplateRepository.findById(id);
         if (opt.isPresent()) {
             WorkflowTemplate wt = opt.get();
-            wt.setactive(active);
+            wt.setActive(active);
             return workflowTemplateRepository.save(wt);
         }
         return null;
