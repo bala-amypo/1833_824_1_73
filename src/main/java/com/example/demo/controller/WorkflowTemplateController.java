@@ -15,7 +15,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/templates")
-@Tag(name = "WorkflowTemplate")
 public class WorkflowTemplateController {
 
     private final WorkflowTemplateService workflowTemplateService;
@@ -25,26 +24,31 @@ public class WorkflowTemplateController {
     }
 
     @PostMapping
-    @Operation(summary = "Create template")
-    public WorkflowTemplate createTemplate(@RequestBody WorkflowTemplate t) {
+    public WorkflowTemplate create(@RequestBody WorkflowTemplate t) {
         return workflowTemplateService.createTemplate(t);
     }
 
     @GetMapping("/{id}")
-    @Operation(summary = "Get template by id")
-    public WorkflowTemplate getTemplateById(@PathVariable Long id) {
+    public WorkflowTemplate getById(@PathVariable Long id) {
         return workflowTemplateService.getTemplateById(id);
     }
 
+    @GetMapping
+    public List<WorkflowTemplate> getAll() {
+        return workflowTemplateService.getAllTemplates();
+    }
+
     @PutMapping("/{id}")
-    @Operation(summary = "Update template")
-    public WorkflowTemplate updateTemplate(@PathVariable Long id, @RequestBody WorkflowTemplate t) {
+    public WorkflowTemplate update(
+            @PathVariable Long id,
+            @RequestBody WorkflowTemplate t) {
         return workflowTemplateService.updateTemplate(id, t);
     }
 
-    @GetMapping
-    @Operation(summary = "List templates")
-    public List<WorkflowTemplate> getAllTemplates() {
-        return workflowTemplateService.getAllTemplates();
+    @PatchMapping("/{id}/activate")
+    public WorkflowTemplate activate(
+            @PathVariable Long id,
+            @RequestParam boolean active) {
+        return workflowTemplateService.activateTemplate(id, active);
     }
 }
