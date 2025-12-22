@@ -22,8 +22,8 @@ public class WorkflowTemplateServiceImpl implements WorkflowTemplateService {
 
     @Override
     public WorkflowTemplate getTemplateById(Long id) {
-        Optional<WorkflowTemplate> opt = workflowTemplateRepository.findById(id);
-        return opt.orElse(null);
+        return workflowTemplateRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("WorkflowTemplate not found"));
     }
 
     @Override
@@ -33,18 +33,19 @@ public class WorkflowTemplateServiceImpl implements WorkflowTemplateService {
 
     @Override
     public WorkflowTemplate updateTemplate(Long id, WorkflowTemplate t) {
-        t.setId(id);
+        WorkflowTemplate existing = workflowTemplateRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("WorkflowTemplate not found"));
+
+        t.setId(existing.getId());
         return workflowTemplateRepository.save(t);
     }
 
     @Override
     public WorkflowTemplate activateTemplate(Long id, boolean active) {
-        Optional<WorkflowTemplate> opt = workflowTemplateRepository.findById(id);
-        if (opt.isPresent()) {
-            WorkflowTemplate wt = opt.get();
-            wt.setActive(active);
-            return workflowTemplateRepository.save(wt);
-        }
-        return null;
+        WorkflowTemplate wt = workflowTemplateRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("WorkflowTemplate not found"));
+
+        wt.setActive(active);
+        return workflowTemplateRepository.save(wt);
     }
 }
