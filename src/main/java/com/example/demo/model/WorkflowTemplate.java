@@ -24,14 +24,14 @@ public class WorkflowTemplate{
     public void setId(Long id) {
         this.id = id;
     }
-    public String gettemplateName() {
-        return templateName;
+    public String getTemplateName() {
+        return TemplateName;
     }
 
-    public void settemplateName(String  templatename) {
-        this.templateName = templateName;
+    public void setTemplateName(String  emplatename) {
+        this.TemplateName = templateName;
     }
-    public String getdescription() {
+    public String getescription() {
         return description;
     }
     public void setdescription(String discription) {
