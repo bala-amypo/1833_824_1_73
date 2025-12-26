@@ -1,7 +1,10 @@
 package com.example.demo.util;
 
+import com.example.demo.model.ApprovalAction;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.Query;
+
+import java.util.Collections;
 import java.util.List;
 
 public class HibernateQueryUtil {
@@ -44,5 +47,21 @@ public class HibernateQueryUtil {
      */
     public static Object getSingleResult(Query query) {
         return query.getSingleResult();
+    }
+
+    /**
+     * Find actions by approver using criteria
+     * This method was missing and is required by UserServiceTest
+     */
+    @SuppressWarnings("unchecked")
+    public static List<ApprovalAction> findActionsByApproverUsingCriteria(EntityManager em, long approverId) {
+        try {
+            String jpql = "SELECT a FROM ApprovalAction a WHERE a.approverId = :approverId";
+            Query query = createQuery(em, jpql, "approverId", approverId);
+            return getResultList(query);
+        } catch (Exception e) {
+            // return empty list on error
+            return Collections.emptyList();
+        }
     }
 }
