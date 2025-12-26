@@ -5,8 +5,6 @@ public class AuthRequest {
     private String usernameOrEmail;
     private String password;
 
-    public AuthRequest() {}
-
     public String getUsernameOrEmail() {
         return usernameOrEmail;
     }

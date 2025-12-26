@@ -17,6 +17,7 @@ public class HibernateQueryUtil {
     private EntityManager entityManager;
 
     public List<ApprovalAction> findActionsByApproverUsingCriteria(Long approverId) {
+
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<ApprovalAction> cq = cb.createQuery(ApprovalAction.class);
         Root<ApprovalAction> root = cq.from(ApprovalAction.class);

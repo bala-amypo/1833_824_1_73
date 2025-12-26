@@ -1,33 +1,12 @@
-package com.example.demo.controller;
+package com.example.demo.repository;
 
 import com.example.demo.model.WorkflowStepConfig;
-import com.example.demo.service.WorkflowStepConfigService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/api/steps")
-public class WorkflowStepConfigController {
+public interface WorkflowStepConfigRepository
+        extends JpaRepository<WorkflowStepConfig, Long> {
 
-    private final WorkflowStepConfigService stepService;
-
-    @Autowired
-    public WorkflowStepConfigController(WorkflowStepConfigService stepService) {
-        this.stepService = stepService;
-    }
-
-    @PostMapping
-    public ResponseEntity<WorkflowStepConfig> createStep(@RequestBody WorkflowStepConfig step) {
-        WorkflowStepConfig createdStep = stepService.createStep(step);
-        return ResponseEntity.ok(createdStep);
-    }
-
-    @GetMapping("/template/{templateId}")
-    public ResponseEntity<List<WorkflowStepConfig>> getStepsByTemplate(@PathVariable("templateId") Long templateId) {
-        List<WorkflowStepConfig> steps = stepService.getStepsForTemplate(templateId);
-        return ResponseEntity.ok(steps);
-    }
+    List<WorkflowStepConfig> findByTemplateIdOrderByLevelNumberAsc(Long templateId);
 }
