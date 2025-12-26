@@ -1,17 +1,10 @@
 package com.example.demo.repository;
 
-import com.example.demo.model.ApprovalAction;
+import com.example.demo.model.ApprovalRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-
 import java.util.List;
 
-public interface ApprovalActionRepository
-        extends JpaRepository<ApprovalAction, Long> {
+public interface ApprovalRequestRepository extends JpaRepository<ApprovalRequest, Long> {
 
-    // REQUIRED BY TEST
-    List<ApprovalAction> findByLevelAndAction(int levelNumber, String action);
-
-    @Query("SELECT a FROM ApprovalAction a WHERE a.approverId = :approverId")
-    List<ApprovalAction> findByApproverId(Long approverId);
+    List<ApprovalRequest> findByRequesterlid(Long requesterlid);
 }
