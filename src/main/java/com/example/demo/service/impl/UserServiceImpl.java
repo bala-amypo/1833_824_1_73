@@ -5,6 +5,7 @@ import com.example.demo.model.Role;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.repository.RoleRepository;
 import org.springframework.stereotype.Service;
+
 import java.util.Set;
 
 @Service
@@ -20,7 +21,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User registerUser(User user, String roleName) {
-        Role r = roleRepository.findByName(roleName);
+
+        Role r = roleRepository.findByName(roleName)
+                .orElseThrow(() -> new RuntimeException("Role not found: " + roleName));
+
         user.setRoles(Set.of(r));
         return userRepository.save(user);
     }
