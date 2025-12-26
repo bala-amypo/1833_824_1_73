@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User registerUser(User user, String roleName) {
-        role r = roleRepository.findByName(roleName);
+        Role r = roleRepository.findByName(roleName);
         user.setRoles(Set.of(r));
         return userRepository.save(user);
     }
