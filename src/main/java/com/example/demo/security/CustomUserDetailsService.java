@@ -1,20 +1,40 @@
-package com.example.demo.exception;
+package com.example.demo.security;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import com.example.demo.model.User;
+import com.example.demo.repository.UserRepository;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.stereotype.Service;
+import java.util.stream.Collectors;
 
-@RestControllerAdvice
-public class GlobalExceptionHandler {
+@Service
+public class CustomUserDetailsService implements UserDetailsService {
 
-    @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<String> handleRuntimeException(RuntimeException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    private final UserRepository userRepository;
+
+    public CustomUserDetailsService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleException(Exception ex) {
-        return new ResponseEntity<>("Internal Server Error", HttpStatus.INTERNAL_SERVER_ERROR);
+    @Override
+    public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+
+        User user = userRepository.findByUsername(username);
+
+        if (user == null) {
+            throw new UsernameNotFoundException("User not found");
+        }
+
+        return new org.springframework.security.core.userdetails.User(
+                user.getUsername(),
+                user.getPassword(),
+                user.getRoles()
+                        .stream()
+                        .map(r -> new SimpleGrantedAuthority(r.getName()))
+                        .collect(Collectors.toSet())
+        );
     }
 }
