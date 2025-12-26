@@ -9,7 +9,4 @@ public interface WorkflowStepConfigRepository
         extends JpaRepository<WorkflowStepConfig, Long> {
 
     List<WorkflowStepConfig> findByTemplateId(Long templateId);
-
-    // REQUIRED BY TEST
-    List<WorkflowStepConfig> findByTemplateIdOrderByLevelNumberAsc(Long templateId);
 }
