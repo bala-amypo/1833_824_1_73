@@ -1,57 +1,26 @@
-// package com.example.demo.security;
+package com.example.demo.security;
 
-// import io.jsonwebtoken.Claims;
-// import io.jsonwebtoken.Jwts;
-// import io.jsonwebtoken.SignatureAlgorithm;
-// import io.jsonwebtoken.security.Keys;
-// import org.springframework.stereotype.Component;
+public class JwtTokenProvider {
 
-// import java.security.Key;
-// import java.util.Date;
+    public JwtTokenProvider() {
+        // Default constructor
+    }
 
-// @Component
-// public class JwtTokenProvider {
+    // Dummy method to simulate token generation
+    public String generateToken(String username) {
+        return "dummy-token-for-" + username;
+    }
 
-//     private static final String SECRET_KEY =
+    // Dummy method to simulate token validation
+    public boolean validateToken(String token) {
+        return token != null && token.startsWith("dummy-token-for-");
+    }
 
-//             "mysecretkeymysecretkeymysecretkey12";
-
-//     private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000;
-
-//     private final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
-
-//     public String generateToken(String username) {
-//         Date now = new Date();
-//         Date expiryDate = new Date(now.getTime() + EXPIRATION_TIME);
-
-//         return Jwts.builder()
-//                 .setSubject(username)
-//                 .setIssuedAt(now)
-//                 .setExpiration(expiryDate)
-//                 .signWith(key, SignatureAlgorithm.HS256)
-//                 .compact();
-//     }
-
-    
-//     public String getUsernameFromToken(String token) {
-//         Claims claims = Jwts.parserBuilder()
-//                 .setSigningKey(key)
-//                 .build()
-//                 .parseClaimsJws(token)
-//                 .getBody();
-
-//         return claims.getSubject();
-//     }
-
-//     public boolean validateToken(String token) {
-//         try {
-//             Jwts.parserBuilder()
-//                     .setSigningKey(key)
-//                     .build()
-//                     .parseClaimsJws(token);
-//             return true;
-//         } catch (Exception e) {
-//             return false;
-//         }
-//     }
-// }
+    // Dummy method to simulate getting username from token
+    public String getUsernameFromToken(String token) {
+        if (validateToken(token)) {
+            return token.replace("dummy-token-for-", "");
+        }
+        return null;
+    }
+}
