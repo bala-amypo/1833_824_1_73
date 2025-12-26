@@ -10,6 +10,6 @@ public interface WorkflowStepConfigRepository
 
     List<WorkflowStepConfig> findByTemplateId(Long templateId);
 
-    
+    // REQUIRED BY TEST
     List<WorkflowStepConfig> findByTemplateIdOrderByLevelNumberAsc(Long templateId);
 }
