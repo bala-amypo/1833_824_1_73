@@ -19,12 +19,12 @@ public class User {
     private String password;
 
     @ManyToMany
-    private Set<role> roles;
+    private Set<Role> roles;
 
     public User() {
     }
 
-    public User(String username, String email, String password, Set<role> roles) {
+    public User(String username, String email, String password, Set<Role> roles) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -59,11 +59,11 @@ public class User {
         this.password = password;
     }
 
-    public Set<role> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
     
-    public void setRoles(Set<role> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
     }
 }
