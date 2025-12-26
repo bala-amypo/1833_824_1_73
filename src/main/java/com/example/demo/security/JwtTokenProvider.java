@@ -12,16 +12,14 @@ import java.util.Date;
 @Component
 public class JwtTokenProvider {
 
-    // 🔐 Secret key (keep minimum 32 chars)
     private static final String SECRET_KEY =
+
             "mysecretkeymysecretkeymysecretkey12";
 
-    // ⏱ Token validity (1 day)
     private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000;
 
     private final Key key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
-    // ✅ Generate token
     public String generateToken(String username) {
         Date now = new Date();
         Date expiryDate = new Date(now.getTime() + EXPIRATION_TIME);
