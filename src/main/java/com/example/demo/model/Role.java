@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class role {
+public class Role {   // <-- Capital R
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +14,9 @@ public class role {
 
     private String name;
 
-    public role() {
-    }
+    public Role() { }   // <-- Capital R
 
-    public role(Long id, String name) {
+    public Role(Long id, String name) {   // <-- Capital R
         this.id = id;
         this.name = name;
     }
