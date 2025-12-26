@@ -13,7 +13,7 @@ public class ApprovalAction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long requested;
+    private Long requested;   // keep this field as is
     private Long approverId;
     private Integer levelNumber;
     private String action;
@@ -48,6 +48,16 @@ public class ApprovalAction {
 
     public void setRequested(Long requested) {
         this.requested = requested;
+    }
+
+    // Add these two methods to satisfy the test code
+
+    public Long getRequestId() {
+        return this.requested;
+    }
+
+    public void setRequestId(Long requestId) {
+        this.requested = requestId;
     }
 
     public Long getApproverId() {
