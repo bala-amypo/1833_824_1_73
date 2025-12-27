@@ -27,8 +27,6 @@ public class WorkflowTemplate {
         this.active = active;
     }
 
-    // ✅ GETTERS & SETTERS ONLY (NO orElseThrow HERE)
-
     public Long getId() {
         return id;
     }

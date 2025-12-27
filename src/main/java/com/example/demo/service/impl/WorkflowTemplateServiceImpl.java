@@ -40,7 +40,10 @@ public class WorkflowTemplateServiceImpl implements WorkflowTemplateService {
                         new RuntimeException("Template not found with id: " + id)
                 );
 
-        existing.setName(template.getName());
+        existing.setTemplateName(template.getTemplateName());
+        existing.setDescription(template.getDescription());
+        existing.setTotalLevels(template.getTotalLevels());
+        existing.setActive(template.getActive());
 
         return workflowTemplateRepository.save(existing);
     }
