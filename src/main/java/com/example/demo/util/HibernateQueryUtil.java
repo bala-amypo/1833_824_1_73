@@ -22,9 +22,8 @@ public class HibernateQueryUtil {
         CriteriaQuery<ApprovalAction> cq = cb.createQuery(ApprovalAction.class);
         Root<ApprovalAction> root = cq.from(ApprovalAction.class);
 
-        if (approverId != null) {
-            cq.where(cb.equal(root.get("approverId"), approverId));
-        }
+        cq.select(root)
+          .where(cb.equal(root.get("approverId"), approverId));
 
         return entityManager.createQuery(cq).getResultList();
     }
