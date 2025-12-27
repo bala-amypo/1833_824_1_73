@@ -29,8 +29,8 @@ public class ApprovalRequest {
     }
 
     // Test expects setRequesterId(long)
-    public void setRequesterId(long requesterId) {
-        this.requesterlid = requesterId;
+    public void setRequesterId(long requesterlid) {
+        this.requesterlid = requesterlid;
     }
 
     // --------------------
