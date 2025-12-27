@@ -44,8 +44,6 @@ import com.example.demo.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -63,12 +61,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User registerUser(User user, String roleName) {
-        // Check if username or email already exists
+        // Check if username already exists
         if (userRepository.existsByUsername(user.getUsername())) {
             throw new RuntimeException("Username already taken");
         }
 
-        // Encode password before saving
+        // Encode password
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
         // Find role
@@ -81,7 +79,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findByUsername(String username) {
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username);
     }
 }
