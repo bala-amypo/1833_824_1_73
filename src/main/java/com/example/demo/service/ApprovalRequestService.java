@@ -1,13 +1,27 @@
+// package com.example.demo.service;
+
+// import com.example.demo.model.ApprovalRequest;
+// import java.util.List;
+
+// public interface ApprovalRequestService {
+
+//     ApprovalRequest createRequest(ApprovalRequest request);
+
+//     List<ApprovalRequest> getRequestsByRequester(Long requesterId);
+
+//     List<ApprovalRequest> getAllRequests();
+// }
 package com.example.demo.service;
 
 import com.example.demo.model.ApprovalRequest;
+
 import java.util.List;
 
 public interface ApprovalRequestService {
 
-    ApprovalRequest createRequest(ApprovalRequest request);
+    ApprovalRequest createRequest(ApprovalRequest req);
 
-    List<ApprovalRequest> getRequestsByRequester(Long requesterId);
+    List<ApprovalRequest> getRequestsByRequester(Long userId);
 
     List<ApprovalRequest> getAllRequests();
 }
