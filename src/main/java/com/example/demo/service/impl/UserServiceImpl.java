@@ -1,39 +1,3 @@
-// package com.example.demo.service.impl;
-
-// import com.example.demo.model.Role;
-// import com.example.demo.model.User;
-// import com.example.demo.repository.RoleRepository;
-// import com.example.demo.repository.UserRepository;
-// import com.example.demo.service.UserService;
-// import org.springframework.stereotype.Service;
-
-// import java.util.Set;
-
-// @Service
-// public class UserServiceImpl implements UserService {
-
-//     private final UserRepository userRepository;
-//     private final RoleRepository roleRepository;
-
-//     public UserServiceImpl(UserRepository userRepository,
-//                            RoleRepository roleRepository) {
-//         this.userRepository = userRepository;
-//         this.roleRepository = roleRepository;
-//     }
-
-//     @Override
-//     public User registerUser(User user, String roleName) {
-//         Role role = roleRepository.findByName(roleName)
-//                 .orElseThrow(() -> new RuntimeException("Role not found"));
-//         user.getRoles().add(role);
-//         return userRepository.save(user);
-//     }
-
-//     @Override
-//     public User findByUsername(String username) {
-//         return userRepository.findByUsername(username);
-//     }
-// }
 package com.example.demo.service.impl;
 
 import com.example.demo.model.Role;
@@ -44,6 +8,9 @@ import com.example.demo.service.UserService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -51,9 +18,11 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository,
-                           RoleRepository roleRepository,
-                           PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(
+            UserRepository userRepository,
+            RoleRepository roleRepository,
+            PasswordEncoder passwordEncoder
+    ) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
@@ -61,25 +30,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User registerUser(User user, String roleName) {
-        // Check if username already exists
-        if (userRepository.existsByUsername(user.getUsername())) {
-            throw new RuntimeException("Username already taken");
-        }
 
-        // Encode password
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        // Find role
         Role role = roleRepository.findByName(roleName)
-                .orElseThrow(() -> new RuntimeException("Role not found"));
+                .orElseGet(() -> roleRepository.save(new Role(roleName)));
 
-        user.getRoles().add(role);
+        Set<Role> roles = new HashSet<>();
+        roles.add(role);
+        user.setRoles(roles);
 
         return userRepository.save(user);
     }
 
     @Override
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username);
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
     }
 }

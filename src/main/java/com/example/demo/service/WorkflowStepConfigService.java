@@ -7,5 +7,5 @@ public interface WorkflowStepConfigService {
 
     WorkflowStepConfig createStep(WorkflowStepConfig step);
 
-    List<WorkflowStepConfig> getStepsForTemplate(Long templated);
+    List<WorkflowStepConfig> getStepsForTemplate(Long templateId);
 }
