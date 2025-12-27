@@ -36,9 +36,7 @@ public class WorkflowTemplate {
         return this;
     }
 
-    // -------------------------
-    // GETTERS & SETTERS
-    // -------------------------
+    
     public Long getId() { 
         return id; 
     }
