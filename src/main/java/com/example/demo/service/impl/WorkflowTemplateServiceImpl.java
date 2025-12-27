@@ -5,9 +5,10 @@ import com.example.demo.repository.WorkflowTemplateRepository;
 import com.example.demo.service.WorkflowTemplateService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
-public class WorkflowTemplateServiceImpl
-        implements WorkflowTemplateService {
+public class WorkflowTemplateServiceImpl implements WorkflowTemplateService {
 
     private final WorkflowTemplateRepository workflowTemplateRepository;
 
@@ -17,12 +18,35 @@ public class WorkflowTemplateServiceImpl
     }
 
     @Override
-    public WorkflowTemplate getTemplateById(Long id) {
+    public WorkflowTemplate createTemplate(WorkflowTemplate template) {
+        return workflowTemplateRepository.save(template);
+    }
 
+    @Override
+    public WorkflowTemplate getTemplateById(Long id) {
         return workflowTemplateRepository
-                .findById(id) // returns Optional<WorkflowTemplate>
+                .findById(id)
                 .orElseThrow(() ->
                         new RuntimeException("Template not found with id: " + id)
                 );
+    }
+
+    @Override
+    public WorkflowTemplate updateTemplate(Long id, WorkflowTemplate template) {
+
+        WorkflowTemplate existing = workflowTemplateRepository
+                .findById(id)
+                .orElseThrow(() ->
+                        new RuntimeException("Template not found with id: " + id)
+                );
+
+        existing.setName(template.getName());
+
+        return workflowTemplateRepository.save(existing);
+    }
+
+    @Override
+    public List<WorkflowTemplate> getAllTemplates() {
+        return workflowTemplateRepository.findAll();
     }
 }
