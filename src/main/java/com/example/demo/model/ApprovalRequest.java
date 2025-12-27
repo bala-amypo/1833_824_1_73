@@ -13,7 +13,7 @@ public class ApprovalRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // KEEP ORIGINAL SPELLING
+    
     private Long templated;
     private Long requesterlid;
 
@@ -23,10 +23,7 @@ public class ApprovalRequest {
     private Integer currentLevel;
     private LocalDateTime createdAt;
 
-    // --------------------
-    // REQUIRED BY TEST
-    // --------------------
-    // Test expects setTemplateId(Long)
+    
     public void setTemplateId(Long templateId) {
         this.templated = templateId;
     }
