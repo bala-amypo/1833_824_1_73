@@ -12,7 +12,7 @@ public class WorkflowStepConfig {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // KEEP ORIGINAL SPELLING
+    
     private Long templated;
 
     private Integer levelNumber;
@@ -32,9 +32,7 @@ public class WorkflowStepConfig {
         this.instructions = instructions;
     }
 
-    // --------------------
-    // EXISTING GETTERS/SETTERS
-    // --------------------
+  
     public Long getId() {
         return id;
     }
@@ -76,9 +74,7 @@ public class WorkflowStepConfig {
         this.instructions = instructions;
     }
 
-    // --------------------
-    // CONSTRUCTORS
-    // --------------------
+    
     public WorkflowStepConfig(
             Long id,
             Long templated,

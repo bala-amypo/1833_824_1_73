@@ -31,9 +31,7 @@ public class WorkflowTemplate {
         this.active = active;
     }
 
-    // -------------------------
-    // REQUIRED BY TEST (DO NOT REMOVE)
-    // -------------------------
+    
     public WorkflowTemplate orElseThrow() {
         return this;
     }
