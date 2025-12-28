@@ -49,6 +49,53 @@
 //                 .orElseThrow(() -> new RuntimeException("User not found"));
 //     }
 // }
+// package com.example.demo.service;
+
+// import com.example.demo.model.Role;
+// import com.example.demo.model.User;
+// import com.example.demo.repository.RoleRepository;
+// import com.example.demo.repository.UserRepository;
+// import org.springframework.security.crypto.password.PasswordEncoder;
+// import org.springframework.stereotype.Service;
+
+// @Service
+// public class UserServiceImpl implements UserService {
+
+//     private final UserRepository userRepository;
+//     private final RoleRepository roleRepository;
+//     private final PasswordEncoder passwordEncoder;
+
+//     public UserServiceImpl(
+//             UserRepository userRepository,
+//             RoleRepository roleRepository,
+//             PasswordEncoder passwordEncoder
+//     ) {
+//         this.userRepository = userRepository;
+//         this.roleRepository = roleRepository;
+//         this.passwordEncoder = passwordEncoder;
+//     }
+
+//     @Override
+//     public User registerUser(User user, String roleName) {
+
+//         Role role = roleRepository.findByName(roleName)
+//                 .orElseGet(() -> {
+//                     Role r = new Role();
+//                     r.setName(roleName);
+//                     return roleRepository.save(r);
+//                 });
+
+//         user.setPassword(passwordEncoder.encode(user.getPassword()));
+//         user.getRoles().add(role);
+
+//         return userRepository.save(user);
+//     }
+
+//     @Override
+//     public User findByUsername(String username) {
+//         return userRepository.findByUsername(username).orElseThrow();
+//     }
+// }
 package com.example.demo.service;
 
 import com.example.demo.model.Role;
@@ -57,6 +104,9 @@ import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.HashSet;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -75,9 +125,11 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    // ✅ FIXED METHOD
     @Override
     public User registerUser(User user, String roleName) {
 
+        // 1️⃣ Fetch or create role
         Role role = roleRepository.findByName(roleName)
                 .orElseGet(() -> {
                     Role r = new Role();
@@ -85,14 +137,25 @@ public class UserServiceImpl implements UserService {
                     return roleRepository.save(r);
                 });
 
+        // 2️⃣ Encode password
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // 3️⃣ IMPORTANT: Initialize roles if null
+        if (user.getRoles() == null) {
+            Set<Role> roles = new HashSet<>();
+            user.setRoles(roles);
+        }
+
+        // 4️⃣ Add role
         user.getRoles().add(role);
 
+        // 5️⃣ Save user
         return userRepository.save(user);
     }
 
     @Override
     public User findByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow();
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found: " + username));
     }
 }
