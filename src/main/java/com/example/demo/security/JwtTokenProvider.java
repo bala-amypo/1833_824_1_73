@@ -58,59 +58,59 @@
 //                 .getBody();
 //     }
 // }
-package com.example.demo.security;
+// package com.example.demo.security;
 
-import com.example.demo.model.User;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.stereotype.Component;
+// import com.example.demo.model.User;
+// import io.jsonwebtoken.Claims;
+// import io.jsonwebtoken.Jwts;
+// import io.jsonwebtoken.SignatureAlgorithm;
+// import org.springframework.stereotype.Component;
 
-import java.util.Date;
-import java.util.stream.Collectors;
+// import java.util.Date;
+// import java.util.stream.Collectors;
 
-@Component
-public class JwtTokenProvider {
+// @Component
+// public class JwtTokenProvider {
 
-    private static final String SECRET = "secretkeysecretkeysecretkeysecretkey";
-    private static final long EXPIRATION = 86400000;
+//     private static final String SECRET = "secretkeysecretkeysecretkeysecretkey";
+//     private static final long EXPIRATION = 86400000;
 
-    public String generateToken(User user) {
+//     public String generateToken(User user) {
 
-        return Jwts.builder()
-                .setSubject(user.getUsername())
-                .claim("userId", user.getId())
-                .claim("email", user.getEmail())
-                .claim(
-                        "roles",
-                        user.getRoles()
-                            .stream()
-                            .map(r -> r.getName())
-                            .collect(Collectors.toList())
-                )
-                .setIssuedAt(new Date())
-                .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
-                .signWith(SignatureAlgorithm.HS256, SECRET)
-                .compact();
-    }
+//         return Jwts.builder()
+//                 .setSubject(user.getUsername())
+//                 .claim("userId", user.getId())
+//                 .claim("email", user.getEmail())
+//                 .claim(
+//                         "roles",
+//                         user.getRoles()
+//                             .stream()
+//                             .map(r -> r.getName())
+//                             .collect(Collectors.toList())
+//                 )
+//                 .setIssuedAt(new Date())
+//                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION))
+//                 .signWith(SignatureAlgorithm.HS256, SECRET)
+//                 .compact();
+//     }
 
-    public boolean validateToken(String token) {
-        try {
-            Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
+//     public boolean validateToken(String token) {
+//         try {
+//             Jwts.parser().setSigningKey(SECRET).parseClaimsJws(token);
+//             return true;
+//         } catch (Exception e) {
+//             return false;
+//         }
+//     }
 
-    public Claims getClaims(String token) {
-        return Jwts.parser()
-                .setSigningKey(SECRET)
-                .parseClaimsJws(token)
-                .getBody();
-    }
+//     public Claims getClaims(String token) {
+//         return Jwts.parser()
+//                 .setSigningKey(SECRET)
+//                 .parseClaimsJws(token)
+//                 .getBody();
+//     }
 
-    public String getUsernameFromToken(String token) {
-        return getClaims(token).getSubject();
-    }
-}
+//     public String getUsernameFromToken(String token) {
+//         return getClaims(token).getSubject();
+//     }
+// }
