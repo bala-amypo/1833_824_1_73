@@ -63,67 +63,57 @@
 //     WorkflowTemplate activateTemplate(Long id, boolean active);
 //     List<WorkflowTemplate> getAllTemplates();
 // }
-package com.example.demo.model;
+package com.example.demo.service.impl;
 
-import jakarta.persistence.*;
+import com.example.demo.model.WorkflowTemplate;
+import com.example.demo.repository.WorkflowTemplateRepository;
+import com.example.demo.service.WorkflowTemplateService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Entity
-@Table(name = "workflow_templates", uniqueConstraints = @UniqueConstraint(columnNames = "template_name"))
-public class WorkflowTemplateService {
+import java.util.List;
+import java.util.Optional;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+@Service
+@Transactional
+public class WorkflowTemplateServiceImpl implements WorkflowTemplateService {
 
-    @Column(name = "template_name")
-    private String templateName;
+    private final WorkflowTemplateRepository templateRepository;
 
-    @Column(length = 1000)
-    private String description;
-
-    @Column(nullable = false)
-    private Integer totalLevels;
-
-    @Column(nullable = false)
-    private Boolean active = Boolean.TRUE;
-
-    public Long getId() {
-        return id;
+    public WorkflowTemplateServiceImpl(WorkflowTemplateRepository templateRepository) {
+        this.templateRepository = templateRepository;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public WorkflowTemplate createTemplate(WorkflowTemplate template) {
+        template.setId(null);
+        return templateRepository.save(template);
     }
 
-    public String getTemplateName() {
-        return templateName;
+    @Override
+    public Optional<WorkflowTemplate> getTemplateById(Long id) {
+        return templateRepository.findById(id);
     }
 
-    public void setTemplateName(String templateName) {
-        this.templateName = templateName;
+    @Override
+    public WorkflowTemplate updateTemplate(Long id, WorkflowTemplate template) {
+        WorkflowTemplate existing = templateRepository.findById(id).orElseThrow();
+        existing.setTemplateName(template.getTemplateName());
+        existing.setDescription(template.getDescription());
+        existing.setTotalLevels(template.getTotalLevels());
+        existing.setActive(template.getActive());
+        return templateRepository.save(existing);
     }
 
-    public String getDescription() {
-        return description;
+    @Override
+    public WorkflowTemplate activateTemplate(Long id, boolean active) {
+        WorkflowTemplate existing = templateRepository.findById(id).orElseThrow();
+        existing.setActive(active);
+        return templateRepository.save(existing);
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Integer getTotalLevels() {
-        return totalLevels;
-    }
-
-    public void setTotalLevels(Integer totalLevels) {
-        this.totalLevels = totalLevels;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public void setActive(Boolean active) {
-        this.active = active;
+    @Override
+    public List<WorkflowTemplate> getAllTemplates() {
+        return templateRepository.findAll();
     }
 }
