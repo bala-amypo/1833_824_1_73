@@ -80,6 +80,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -89,19 +90,30 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider jwtTokenProvider;
     private final UserService userService;
+    private final PasswordEncoder passwordEncoder;
 
     public AuthController(AuthenticationManager authenticationManager,
                           JwtTokenProvider jwtTokenProvider,
-                          UserService userService) {
+                          UserService userService,
+                          PasswordEncoder passwordEncoder) {
         this.authenticationManager = authenticationManager;
         this.jwtTokenProvider = jwtTokenProvider;
         this.userService = userService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Operation(summary = "Register user", security = {}) // No token required
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
-        userService.registerUser(request);
+        // Convert DTO to User entity
+        User user = new User();
+        user.setUsername(request.getUsername());
+        user.setPassword(passwordEncoder.encode(request.getPassword()));
+        // Set other fields if needed
+
+        // Call UserService (pass role if required)
+        userService.registerUser(user, request.getRole()); 
+
         return ResponseEntity.ok("User registered successfully");
     }
 
@@ -117,7 +129,7 @@ public class AuthController {
                     )
             );
 
-            // Load user and generate JWT
+            // Load user from DB and generate JWT
             User user = userService.findByUsername(request.getUsername());
             String token = jwtTokenProvider.generateToken(user);
 
