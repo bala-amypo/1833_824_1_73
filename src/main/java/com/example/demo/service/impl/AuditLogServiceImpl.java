@@ -1,42 +1,64 @@
-// package com.example.demo.service.impl;
+// // package com.example.demo.service.impl;
+
+// // import com.example.demo.model.AuditLogRecord;
+// // import com.example.demo.repository.AuditLogRecordRepository;
+// // import com.example.demo.service.AuditLogService;
+// // import org.springframework.stereotype.Service;
+
+// // import java.time.LocalDateTime;
+// // import java.util.List;
+
+// // @Service
+// // public class AuditLogServiceImpl implements AuditLogService {
+
+// //     private final AuditLogRecordRepository auditLogRecordRepository;
+
+// //     public AuditLogServiceImpl(AuditLogRecordRepository auditLogRecordRepository) {
+// //         this.auditLogRecordRepository = auditLogRecordRepository;
+// //     }
+
+// //     @Override
+// //     public AuditLogRecord logEvent(Long requestId, String eventType, String details) {
+// //         AuditLogRecord record = new AuditLogRecord();
+// //         record.setRequestId(requestId);
+// //         record.setEventType(eventType);
+// //         record.setDetails(details);
+// //         record.setLoggedAt(LocalDateTime.now()); 
+// //         return auditLogRecordRepository.save(record);
+// //     }
+
+// //     @Override
+// //     public List<AuditLogRecord> getLogsByRequestId(Long requestId) {
+// //         return auditLogRecordRepository.findByRequestId(requestId);
+// //     }
+// // }
+// package com.example.demo.service;
 
 // import com.example.demo.model.AuditLogRecord;
-// import com.example.demo.repository.AuditLogRecordRepository;
-// import com.example.demo.service.AuditLogService;
-// import org.springframework.stereotype.Service;
 
-// import java.time.LocalDateTime;
-// import java.util.List;
+// public interface AuditLogService {
 
-// @Service
-// public class AuditLogServiceImpl implements AuditLogService {
-
-//     private final AuditLogRecordRepository auditLogRecordRepository;
-
-//     public AuditLogServiceImpl(AuditLogRecordRepository auditLogRecordRepository) {
-//         this.auditLogRecordRepository = auditLogRecordRepository;
-//     }
-
-//     @Override
-//     public AuditLogRecord logEvent(Long requestId, String eventType, String details) {
-//         AuditLogRecord record = new AuditLogRecord();
-//         record.setRequestId(requestId);
-//         record.setEventType(eventType);
-//         record.setDetails(details);
-//         record.setLoggedAt(LocalDateTime.now()); 
-//         return auditLogRecordRepository.save(record);
-//     }
-
-//     @Override
-//     public List<AuditLogRecord> getLogsByRequestId(Long requestId) {
-//         return auditLogRecordRepository.findByRequestId(requestId);
-//     }
+//     AuditLogRecord saveLog(AuditLogRecord log);
 // }
-package com.example.demo.service;
+// AuditLogServiceImpl.java
+package com.example.demo.service.impl;
 
 import com.example.demo.model.AuditLogRecord;
+import com.example.demo.repository.AuditLogRecordRepository;
+import com.example.demo.service.AuditLogService;
+import org.springframework.stereotype.Service;
 
-public interface AuditLogService {
+@Service
+public class AuditLogServiceImpl implements AuditLogService {
 
-    AuditLogRecord saveLog(AuditLogRecord log);
+    private final AuditLogRecordRepository auditLogRepository;
+
+    public AuditLogServiceImpl(AuditLogRecordRepository auditLogRepository) {
+        this.auditLogRepository = auditLogRepository;
+    }
+
+    @Override
+    public AuditLogRecord saveLog(AuditLogRecord log) {
+        return auditLogRepository.save(log);
+    }
 }
