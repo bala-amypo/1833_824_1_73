@@ -20,9 +20,8 @@ public class ApprovalRequest {
     private String requestTitle;
 
     @Lob
-    @Column(name = "request_payload_json", columnDefinition = "LONGTEXT")
+    @Column(nullable = false)
     private String requestPayloadJson;
-
 
     @Column(nullable = false)
     private String status = "PENDING";
