@@ -47,24 +47,61 @@
 //         return userRepository.findByUsername(username).orElseThrow();
 //     }
 // }
-@Override
-public User registerUser(String username, String email, String password) {
+package com.example.demo.service.impl;
 
-    User user = new User();
-    user.setUsername(username);
-    user.setEmail(email);
-    user.setPassword(passwordEncoder.encode(password));
+import com.example.demo.model.Role;
+import com.example.demo.model.User;
+import com.example.demo.repository.RoleRepository;
+import com.example.demo.repository.UserRepository;
+import com.example.demo.service.UserService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
 
-    Role role = roleRepository.findByName("ROLE_USER")
-            .orElseGet(() -> roleRepository.save(new Role("ROLE_USER")));
+@Service
+public class UserServiceImpl implements UserService {
 
-    user.getRoles().add(role);
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    return userRepository.save(user);
-}
+    public UserServiceImpl(
+            UserRepository userRepository,
+            RoleRepository roleRepository,
+            PasswordEncoder passwordEncoder
+    ) {
+        this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
-@Override
-public User findByUsername(String username) {
-    return userRepository.findByUsername(username)
-            .orElseThrow(() -> new RuntimeException("User not found"));
+    // ✅ THIS METHOD MUST MATCH INTERFACE
+    @Override
+    public User registerUser(User user, String roleName) {
+
+        // Encode password
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+
+        // Ensure role exists
+        Role role = roleRepository.findByName(roleName)
+                .orElseGet(() -> {
+                    Role r = new Role();
+                    r.setName(roleName);
+                    return roleRepository.save(r);
+                });
+
+        // Ensure roles collection exists
+        if (user.getRoles() == null) {
+            user.setRoles(new java.util.HashSet<>());
+        }
+
+        user.getRoles().add(role);
+
+        return userRepository.save(user);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found: " + username));
+    }
 }
