@@ -68,3 +68,62 @@
 //         return new AuthResponse(token, user.getUsername(), roles);
 //     }
 // }
+package com.example.demo.controller;
+
+import com.example.demo.dto.AuthRequest;
+import com.example.demo.dto.RegisterRequest;
+import com.example.demo.model.User;
+import com.example.demo.security.JwtTokenProvider;
+import com.example.demo.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.web.bind.annotation.*;
+
+@RestController
+@RequestMapping("/auth")
+public class AuthController {
+
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenProvider jwtTokenProvider;
+    private final UserService userService;
+
+    public AuthController(AuthenticationManager authenticationManager,
+                          JwtTokenProvider jwtTokenProvider,
+                          UserService userService) {
+        this.authenticationManager = authenticationManager;
+        this.jwtTokenProvider = jwtTokenProvider;
+        this.userService = userService;
+    }
+
+    @Operation(summary = "Register user", security = {}) // No token required
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody RegisterRequest request) {
+        userService.registerUser(request);
+        return ResponseEntity.ok("User registered successfully");
+    }
+
+    @Operation(summary = "Login user", security = {}) // No token required
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody AuthRequest request) {
+        try {
+            // Authenticate user
+            authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            request.getUsername(),
+                            request.getPassword()
+                    )
+            );
+
+            // Load user and generate JWT
+            User user = userService.findByUsername(request.getUsername());
+            String token = jwtTokenProvider.generateToken(user);
+
+            return ResponseEntity.ok(token);
+        } catch (AuthenticationException e) {
+            return ResponseEntity.status(401).body("Invalid username/password");
+        }
+    }
+}
