@@ -68,24 +68,35 @@
 //         return new AuthResponse(token, user.getUsername(), roles);
 //     }
 // }
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+package com.example.demo.controller;
+
+import com.example.demo.dto.AuthRequest;
+import com.example.demo.dto.RegisterRequest;
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 
-    @Operation(summary = "Register user")
-    @SecurityRequirement(name = "BearerAuth", scopes = {})
+    @Operation(
+        summary = "Register user",
+        security = {}   // 🔓 NO TOKEN REQUIRED
+    )
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody RegisterRequest request) {
-        ...
+        // register logic
+        return ResponseEntity.ok("User registered");
     }
 
-    @Operation(summary = "Login user")
-    @SecurityRequirement(name = "BearerAuth", scopes = {})
+    @Operation(
+        summary = "Login user",
+        security = {}   // 🔓 NO TOKEN REQUIRED
+    )
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest request) {
-        ...
+        // login logic
+        return ResponseEntity.ok("JWT_TOKEN");
     }
 }
