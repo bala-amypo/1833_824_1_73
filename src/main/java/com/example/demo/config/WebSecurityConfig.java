@@ -24,13 +24,12 @@ public class WebSecurityConfig {
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
     }
 
-    // ✅ Password encoder (used in tests)
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
-    // ✅ Authentication manager
+   
     @Bean
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration configuration
@@ -38,7 +37,7 @@ public class WebSecurityConfig {
         return configuration.getAuthenticationManager();
     }
 
-    // ✅ Security filter chain
+  
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
