@@ -34,7 +34,7 @@ public class WebSecurityConfig {
         return http.getSharedObject(AuthenticationManager.class);
     }
 
-    // 🔐 Security Filter Chain
+    
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
