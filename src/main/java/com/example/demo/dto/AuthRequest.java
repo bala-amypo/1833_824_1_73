@@ -31,7 +31,7 @@ public class AuthRequest {
     private String username;
     private String password;
 
-    // Getter & Setter for username
+    // ✅ EXISTING
     public String getUsername() {
         return username;
     }
@@ -40,7 +40,11 @@ public class AuthRequest {
         this.username = username;
     }
 
-    // Getter & Setter for password
+    // ✅ ADD THIS (to satisfy test)
+    public void setUsernameOrEmail(String usernameOrEmail) {
+        this.username = usernameOrEmail;
+    }
+
     public String getPassword() {
         return password;
     }
