@@ -31,6 +31,7 @@ private String requestPayloadJson;
     @Column(nullable = false)
     private String status = "PENDING";
 
+
     public Long getId() {
         return id;
     }
